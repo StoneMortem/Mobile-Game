@@ -5,7 +5,7 @@ public class PlayerScript : MonoBehaviour
 {
     private float HP = 100;
     private float dmg = 2;
-    public float gold = 0;
+    public int gold = 0;
     private SpriteRenderer Spr;
     GameObject currentEnemy = null;
     EnemyScript ES;

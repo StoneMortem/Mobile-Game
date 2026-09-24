@@ -166,6 +166,7 @@ MonoBehaviour:
   roomPrefabs:
   - {fileID: 3304314656893925732, guid: f6adecc262cd4fe47b9e26da951c6a4f, type: 3}
   - {fileID: 6825268343305966117, guid: 63860e94e35a7a8489edda0f08dc454e, type: 3}
+  enemyPrefabs: []
   playerPrefab: {fileID: 7626503919488844529, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
   playerSpawner: {fileID: 1751229549}
   roomAmount: 8

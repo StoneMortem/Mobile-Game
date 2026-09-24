@@ -6,6 +6,7 @@ public class DungeonSpawner : MonoBehaviour
 {
     [Header("SETUP")]
     [SerializeField] GameObject[] roomPrefabs;
+    [SerializeField] Transform[] enemyPrefabs;
     [SerializeField] Transform playerPrefab;
     [SerializeField] Transform playerSpawner;
 
@@ -28,11 +29,21 @@ public class DungeonSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, roomPrefabs.Length);
 
         GameObject newRoomObject = Instantiate(roomPrefabs[randomIndex], new Vector3(nextRoom, 0f, 0f), Quaternion.identity);
-
         RoomScript newRoom = newRoomObject.GetComponent<RoomScript>();
 
         float roomWidth = newRoom.GetWidth();
 
         nextRoom += roomWidth;
+
+        Transform enemySpawn = newRoom.transform.Find("Enemy Spawner");
+
+        SpawnEnemy(enemySpawn);
+    }
+
+    void SpawnEnemy(Transform enemySpawn)
+    {
+        int randomIndex = Random.Range(0, enemyPrefabs.Length);
+
+        Transform enemy = Instantiate(enemyPrefabs[randomIndex], enemySpawn.position, Quaternion.identity);
     }
 }

@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
             }
             
         }
-        if (TEMPATK && currentEnemy != null) { StartCoroutine(TEMPAUTOATTACK()); }
+        if (TEMPATK && currentEnemy != null && ES.health >= 0) { StartCoroutine(TEMPAUTOATTACK()); }
         
     }
 

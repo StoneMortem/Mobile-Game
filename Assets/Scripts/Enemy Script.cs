@@ -9,6 +9,10 @@ public class EnemyScript : MonoBehaviour
     public float dmg;
     public bool canAtk = true;
 
+    //ADDING HANDLING FOR MULTIPLE ATTACKS LATER ON
+
+    private Animator anim;
+
     GameObject Player;
     PlayerScript PS;
     public SpriteRenderer sr;
@@ -24,13 +28,20 @@ public class EnemyScript : MonoBehaviour
     {
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        health = 10;
+        health = 50;
         level = 1;
         dmg = level * 2;
-        Player = GameObject.FindGameObjectWithTag("Player");
+        
+
+    }
+
+    private void Start()
+    {
+        {Player = GameObject.FindGameObjectWithTag("Player");
         PS = Player.GetComponent<PlayerScript>();
         sr = GetComponent<SpriteRenderer>();
-
+            anim = GetComponent<Animator>();
+        }
     }
 
 
@@ -46,12 +57,18 @@ public class EnemyScript : MonoBehaviour
     }
     private void Atk()
     {
+        anim.Play("Attack");
         PS.TakeDamage(dmg);
         StartCoroutine(AtkCooldown());
     }
     public void Dmg(float damage)
     {
         Debug.Log("Enemy took " + damage + ". Remaining health: " + health);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            anim.Play("Hurt");
+        }
+        
         StartCoroutine(ColorShift());
         health -= damage;
 
@@ -78,9 +95,11 @@ public class EnemyScript : MonoBehaviour
 
     private void Die()
     {
+        anim.Play("Death");
         PS.gold += level * 2;
         Debug.Log("BLEHH!!! Player gained " + level*2 + "gold!");
-        Destroy(gameObject);
+        canAtk = false;
+        Destroy(gameObject,.5f);
         
         
     }

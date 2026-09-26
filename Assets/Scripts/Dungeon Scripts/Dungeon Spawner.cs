@@ -6,6 +6,7 @@ public class DungeonSpawner : MonoBehaviour
 {
     [Header("SETUP")]
     [SerializeField] GameObject[] roomPrefabs;
+    [SerializeField] GameObject entrancePrefab;
     [SerializeField] Transform[] enemyPrefabs;
     [SerializeField] Transform playerPrefab;
     [SerializeField] Transform playerSpawner;
@@ -16,6 +17,12 @@ public class DungeonSpawner : MonoBehaviour
 
     void Start()
     {
+        // Entrance is always first
+        GameObject newRoomObject = Instantiate(entrancePrefab, new Vector3(nextRoom, 0f, 0f), Quaternion.identity);
+        RoomScript newRoom = newRoomObject.GetComponent<RoomScript>();
+        float roomWidth = newRoom.GetWidth();
+        nextRoom += roomWidth - 6; // Dunno why only this works, fix it later
+
         for (int i = 0; i < roomAmount; i++)
         {
             SpawnRoom();
@@ -37,13 +44,15 @@ public class DungeonSpawner : MonoBehaviour
 
         Transform enemySpawn = newRoom.transform.Find("Enemy Spawner");
 
-        SpawnEnemy(enemySpawn);
+        SpawnEnemy(enemySpawn, newRoom);
     }
 
-    void SpawnEnemy(Transform enemySpawn)
+    void SpawnEnemy(Transform enemySpawn, RoomScript room)
     {
         int randomIndex = Random.Range(0, enemyPrefabs.Length);
 
         Transform enemy = Instantiate(enemyPrefabs[randomIndex], enemySpawn.position, Quaternion.identity);
+
+        room.SetEnemy(enemy);
     }
 }

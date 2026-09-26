@@ -166,6 +166,7 @@ MonoBehaviour:
   roomPrefabs:
   - {fileID: 3304314656893925732, guid: f6adecc262cd4fe47b9e26da951c6a4f, type: 3}
   - {fileID: 6825268343305966117, guid: 63860e94e35a7a8489edda0f08dc454e, type: 3}
+  entrancePrefab: {fileID: 678990629020888124, guid: c3bf0b05aad12f744911ad3d67dfa3cf, type: 3}
   enemyPrefabs:
   - {fileID: 5411966447077713983, guid: b2adbefa0bd7e5b44b30dd7ac753b1de, type: 3}
   - {fileID: 5832791005977068484, guid: bd4cc2b81858705448e6749d3063a9be, type: 3}
@@ -324,6 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bd692d03bede5438f957a87618ffed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraScript
+  cameraOffset: 5
 --- !u!1 &1751229548
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +351,7 @@ Transform:
   m_GameObject: {fileID: 1751229548}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.8, y: 1.02, z: 0}
+  m_LocalPosition: {x: -7.75, y: 1.02, z: 0}
   m_LocalScale: {x: 7.8999996, y: 7.8999996, z: 7.8999996}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -5,6 +5,8 @@ public class CameraScript : MonoBehaviour
     public static CameraScript Instance;
     private Transform player;
 
+    [SerializeField] float cameraOffset = 0;
+
     public void SetPlayer (Transform player) { this.player = player; }
 
     private void Awake()
@@ -20,6 +22,6 @@ public class CameraScript : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(player.position.x + cameraOffset, transform.position.y, transform.position.z);
     }
 }

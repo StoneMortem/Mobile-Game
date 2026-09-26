@@ -822,10 +822,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3304314656893925732, guid: f6adecc262cd4fe47b9e26da951c6a4f, type: 3}
       propertyPath: m_Name
-      value: Guarded Door Room Variant
+      value: Guarded Door Room
       objectReference: {fileID: 0}
     - target: {fileID: 3304314656893925732, guid: f6adecc262cd4fe47b9e26da951c6a4f, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3325888661277155180, guid: f6adecc262cd4fe47b9e26da951c6a4f, type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

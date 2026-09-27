@@ -348,8 +348,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 502, y: -50}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 484, y: -50}
+  m_SizeDelta: {x: 32.472, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &490759012
 MonoBehaviour:
@@ -1271,8 +1271,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -461, y: 103}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -473, y: 103}
+  m_SizeDelta: {x: 31.4481, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241534820
 MonoBehaviour:
@@ -1392,8 +1392,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 459, y: -179}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 451, y: -179}
+  m_SizeDelta: {x: 29.4653, y: 29.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1275615578
 MonoBehaviour:
@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 1289990870}
   - component: {fileID: 1289990869}
   m_Layer: 5
-  m_Name: Options Button
+  m_Name: Options Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1763,7 +1763,7 @@ GameObject:
   - component: {fileID: 1589011890}
   - component: {fileID: 1589011889}
   m_Layer: 5
-  m_Name: Shop Text
+  m_Name: Inventory Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2075,8 +2075,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 493, y: 189}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 494, y: 189}
+  m_SizeDelta: {x: 29.0903, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662463141
 MonoBehaviour:
@@ -2173,7 +2173,7 @@ GameObject:
   - component: {fileID: 1677389052}
   - component: {fileID: 1677389051}
   m_Layer: 5
-  m_Name: Shop Button
+  m_Name: Inventory Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2196,9 +2196,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 373, y: 193}
-  m_SizeDelta: {x: 160, y: 30}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 372.62744, y: 193}
+  m_SizeDelta: {x: 31.6829, y: 30}
+  m_Pivot: {x: 0.50000006, y: 0.5}
 --- !u!114 &1677389051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2822,8 +2822,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 367, y: -77}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 346, y: -77}
+  m_SizeDelta: {x: 29.8537, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2061509350
 MonoBehaviour:
@@ -2943,8 +2943,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 321, y: -200}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 313, y: -200}
+  m_SizeDelta: {x: 28.7086, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2086666648
 MonoBehaviour:

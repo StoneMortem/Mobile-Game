@@ -9,15 +9,20 @@ public class EnemyScript : MonoBehaviour
     public float dmg;
     public bool canAtk = true;
 
+    //ADDING HANDLING FOR MULTIPLE ATTACKS LATER ON
+
+    private Animator anim;
+
     GameObject Player;
     PlayerScript PS;
     public SpriteRenderer sr;
-    
+
 
     //later, we will probably have an ENUM dictating which enemy type spawns (and any particular stats unique to them)
     //but for now, I just want to create a generic enemy
 
-
+    // Getters
+    public float GetHealth() { return health; }
 
 
     private void Awake()
@@ -27,31 +32,54 @@ public class EnemyScript : MonoBehaviour
         health = 10;
         level = 1;
         dmg = level * 2;
-        Player = GameObject.FindGameObjectWithTag("Player");
+        
+
+    }
+
+    private void Start()
+    {
+        {Player = GameObject.FindGameObjectWithTag("Player");
         PS = Player.GetComponent<PlayerScript>();
         sr = GetComponent<SpriteRenderer>();
-
-    }
-
-
-    void Update()
-    {
-        if (canAtk)
-        {
-            Debug.Log("Attacking Player");
-            Atk();
-            
+            anim = GetComponent<Animator>();
         }
-        
     }
-    private void Atk()
+
+
+    //void Update()
+    //{
+    //    if (canAtk)
+    //    {
+    //        Debug.Log("Attacking Player");
+    //        Atk();
+            
+    //    }
+        
+    //}
+    public IEnumerator Atk()
     {
+        Debug.Log("Enemy attack started");
+
+        anim.Play("Attack");
+
+        yield return null;
+        AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(state.length);
+
+        // anim.Play("Idle");
+
         PS.TakeDamage(dmg);
-        StartCoroutine(AtkCooldown());
+        yield return new WaitForSeconds(.5f);
+        //StartCoroutine(AtkCooldown());
     }
     public void Dmg(float damage)
     {
         Debug.Log("Enemy took " + damage + ". Remaining health: " + health);
+        if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            anim.Play("Hurt");
+        }
+        
         StartCoroutine(ColorShift());
         health -= damage;
 
@@ -78,9 +106,11 @@ public class EnemyScript : MonoBehaviour
 
     private void Die()
     {
+        anim.Play("Death");
         PS.gold += level * 2;
         Debug.Log("BLEHH!!! Player gained " + level*2 + "gold!");
-        Destroy(gameObject);
+        canAtk = false;
+        Destroy(gameObject,.5f);
         
         
     }

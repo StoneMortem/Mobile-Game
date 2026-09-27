@@ -1,12 +1,20 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
 
     private bool inCombat = false;
+
     [SerializeField] float runSpeed = 5f;
+    private float normalRunSpeed;
+    [SerializeField] float tappingRunSpeed;
     private Rigidbody2D rb;
+    
+    
     private Animator animator;
+    private float normalSpeed;
+    private float tapSpeed;
 
 
     void Start()
@@ -15,6 +23,39 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         CameraScript.Instance.SetPlayer(transform);
+
+        normalSpeed = animator.speed;
+        tapSpeed = normalSpeed * 1.5f;
+
+        normalRunSpeed = runSpeed;
+        tappingRunSpeed = runSpeed + 1;
+    }
+
+    void Update()
+    {
+        bool tapping = false;
+
+        // Touch screen
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+            tapping = true;
+
+        // Mouse
+        if (Mouse.current != null && Mouse.current.leftButton.isPressed)
+            tapping = true;
+
+        if (!inCombat)
+        {
+            if (tapping)
+            {
+                animator.speed = tapSpeed;
+                runSpeed = tappingRunSpeed;
+            }
+            else
+            {
+                animator.speed = normalSpeed;
+                runSpeed = normalRunSpeed;
+            }
+        }
     }
 
     void FixedUpdate()

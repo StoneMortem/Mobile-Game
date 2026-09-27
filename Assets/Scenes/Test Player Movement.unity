@@ -974,6 +974,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2861773360779078648, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
+      propertyPath: normalRunSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2861773360779078648, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
+      propertyPath: tappingRunSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7626503919488844529, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.591362

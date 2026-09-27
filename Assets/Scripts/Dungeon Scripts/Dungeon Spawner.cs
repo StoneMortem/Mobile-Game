@@ -28,7 +28,14 @@ public class DungeonSpawner : MonoBehaviour
             SpawnRoom();
         }
 
-        Instantiate(playerPrefab, playerSpawner.position, Quaternion.identity);
+        Transform player = Instantiate(playerPrefab, playerSpawner.position, Quaternion.identity);
+        PlayerScript playerScript = player.GetComponent<PlayerScript>();
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+
+        Debug.Log("Playerscript: " + playerScript);
+
+        CombatManager.Instance.SetPlayer(playerScript);
+        CombatManager.Instance.SetPlayerMovement(playerMovement);
     }
 
     void SpawnRoom()
@@ -53,6 +60,10 @@ public class DungeonSpawner : MonoBehaviour
 
         Transform enemy = Instantiate(enemyPrefabs[randomIndex], enemySpawn.position, Quaternion.identity);
 
-        room.SetEnemy(enemy);
+        // Find combat trigger and assign enemy to it
+        Transform combatTrigger = room.transform.Find("Combat Trigger");
+        CombatScript combatScript = combatTrigger.GetComponent<CombatScript>();
+
+        combatScript.SetEnemy(enemy);
     }
 }

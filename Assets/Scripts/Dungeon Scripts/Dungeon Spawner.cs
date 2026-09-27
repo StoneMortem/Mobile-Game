@@ -7,6 +7,7 @@ public class DungeonSpawner : MonoBehaviour
     [Header("SETUP")]
     [SerializeField] GameObject[] roomPrefabs;
     [SerializeField] GameObject entrancePrefab;
+    [SerializeField] GameObject exitPrefab;
     [SerializeField] Transform[] enemyPrefabs;
     [SerializeField] Transform playerPrefab;
     [SerializeField] Transform playerSpawner;
@@ -14,6 +15,14 @@ public class DungeonSpawner : MonoBehaviour
     [Header("VALUES")]
     [SerializeField] int roomAmount = 8;
     private float nextRoom = 0f;
+
+    [Header("UI")]
+    [SerializeField] GameObject dungeonCompleteCanvas;
+
+    void Awake()
+    {
+        dungeonCompleteCanvas.SetActive(false);
+    }
 
     void Start()
     {
@@ -27,6 +36,9 @@ public class DungeonSpawner : MonoBehaviour
         {
             SpawnRoom();
         }
+
+        //Spawn Exit last
+        SpawnExit();
 
         Transform player = Instantiate(playerPrefab, playerSpawner.position, Quaternion.identity);
         PlayerScript playerScript = player.GetComponent<PlayerScript>();
@@ -52,6 +64,15 @@ public class DungeonSpawner : MonoBehaviour
         Transform enemySpawn = newRoom.transform.Find("Enemy Spawner");
 
         SpawnEnemy(enemySpawn, newRoom);
+    }
+
+    void SpawnExit()
+    {
+        GameObject newRoomObject = Instantiate(exitPrefab, new Vector3(nextRoom, 0f, 0f), Quaternion.identity);
+        Transform completeDungeonTrigger = newRoomObject.transform.Find("Dungeon Complete Trigger");
+        DungeonCompleteScript dcScript = completeDungeonTrigger.GetComponent<DungeonCompleteScript>();
+
+        dcScript.SetDungeonCompleteCanvas(dungeonCompleteCanvas);
     }
 
     void SpawnEnemy(Transform enemySpawn, RoomScript room)

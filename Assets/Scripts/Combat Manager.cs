@@ -40,9 +40,17 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat(Transform enemy)
     {
-        currentEnemy = enemy.GetComponent<EnemyScript>();
 
-        StartCoroutine(CombatLoop());
+        try {
+            currentEnemy = enemy.GetComponent<EnemyScript>();
+                Debug.Log("Enemy name: " + currentEnemy.name);
+            StartCoroutine(CombatLoop());
+        }
+        catch { }
+        finally {  }
+
+
+        
     }
 
     public IEnumerator CombatLoop()
@@ -84,12 +92,20 @@ public class CombatManager : MonoBehaviour
 
     private bool CheckHealth()
     {
-        if (currentEnemy.GetHealth() > 0 && player.GetHealth() > 0)
+        if (currentEnemy != null)
         {
-            return true;
-        } else
+            if (currentEnemy.GetHealth() > 0 && player.GetHealth() > 0)
+            {
+                return true;
+            }
+            else {  return false; }
+
+        }
+        else
         {
             return false;
         }
     }
 }
+        
+

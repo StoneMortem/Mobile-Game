@@ -42,6 +42,7 @@ public class Upgrades : MonoBehaviour
     public void UpgradeDisplay()
     {
         displayActive = !displayActive;
+        //Udisplay.SetActive(displayActive);
     }
 
     public void UpgradeDamage()

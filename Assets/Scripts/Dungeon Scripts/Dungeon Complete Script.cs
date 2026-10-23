@@ -26,7 +26,7 @@ public class DungeonCompleteScript : MonoBehaviour
 
     private IEnumerator ToUpgradeScreen()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(4f);
 
         SceneManager.LoadSceneAsync(3);
     }

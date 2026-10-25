@@ -49,6 +49,8 @@ public class EnemyScript : MonoBehaviour
         healthBar = GetComponentInChildren<Slider>();
         healthBar.maxValue = maxHealth;
         healthBar.value = health;
+
+        damageText.text = " ";
     }
 
     private void Start()

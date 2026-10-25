@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class DungeonCompleteScript : MonoBehaviour
@@ -16,14 +17,18 @@ public class DungeonCompleteScript : MonoBehaviour
 
             dungeonCompleteCanvas.SetActive(true);
 
+            int level = PlayerPrefs.GetInt("Level", 1);
+            PlayerPrefs.SetInt("Level", level + 1);
+
             StartCoroutine(ToUpgradeScreen());
         }
     }
 
     private IEnumerator ToUpgradeScreen()
     {
-        yield return new WaitForSeconds(3f);
-        // change scenes
+        yield return new WaitForSeconds(4f);
+
+        SceneManager.LoadSceneAsync(3);
     }
 
 }

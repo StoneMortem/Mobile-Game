@@ -4,7 +4,12 @@ using System.Collections;
 public class FireballScript : MonoBehaviour
 {
     private int damage = 10; // Determined by upgrades later
-    private float cooldown = 20f; // Determined by upgrades later
+
+    void Awake()
+    {
+        damage = PlayerPrefs.GetInt("FireballDamage", 10);
+    }
+
     public IEnumerator Fireball(EnemyScript enemy)
     {
         Animator fireballAnimator = GetComponent<Animator>();

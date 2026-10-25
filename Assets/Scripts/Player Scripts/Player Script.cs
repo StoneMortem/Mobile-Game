@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
 
     private float HP = 100;
     private float dmg = 2;
+    private float dodge = 2;
     public int gold = 0;
     private SpriteRenderer Spr;
     EnemyScript ES;
@@ -49,6 +50,10 @@ public class PlayerScript : MonoBehaviour
         SpellController.Instance.SetPlayerScript(PlayerScript.Instance);
 
         damageText.text = "";
+
+        HP = PlayerPrefs.GetInt("PlayerHP", 10);
+        dmg = PlayerPrefs.GetInt("PlayerDmg", 2);
+        dodge = PlayerPrefs.GetInt("Dodge", 2);
     }
 
     void Start()
@@ -125,6 +130,8 @@ public class PlayerScript : MonoBehaviour
 
     public IEnumerator TakeDamage(float damage)
     {
+        // Random chance to dodge here
+
         if (!smoke)
         {
             damageText.text = $"{damage}";

@@ -1,6 +1,7 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Collections;
 public class EnemyScript : MonoBehaviour
 {
     public float atkInterval;
@@ -8,6 +9,11 @@ public class EnemyScript : MonoBehaviour
     public int level;
     public float dmg;
     public bool canAtk = true;
+    private bool frozen = false;
+    private float frozenTime = 0;
+
+    // UI
+    [SerializeField] TMP_Text damageText;
 
     //ADDING HANDLING FOR MULTIPLE ATTACKS LATER ON
 
@@ -56,24 +62,42 @@ public class EnemyScript : MonoBehaviour
     //    }
         
     //}
+
+    void Update()
+    {
+        if (frozen)
+        {
+            frozenTime -= Time.deltaTime;
+
+            if (frozenTime <= 0f)
+            {
+                frozen = false;
+            }
+        }
+    }
     public IEnumerator Atk()
     {
-        Debug.Log("Enemy attack started");
+        if (!frozen)
+        {
+            Debug.Log("Enemy attack started");
 
-        anim.Play("Attack");
+            anim.Play("Attack");
 
-        yield return null;
-        AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
-        yield return new WaitForSeconds(state.length);
+            yield return null;
+            AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
+            yield return new WaitForSeconds(state.length);
 
-        // anim.Play("Idle");
+            // anim.Play("Idle");
 
-        PS.TakeDamage(dmg);
-        yield return new WaitForSeconds(.5f);
-        //StartCoroutine(AtkCooldown());
+            StartCoroutine(PS.TakeDamage(dmg));
+            yield return new WaitForSeconds(.5f);
+            //StartCoroutine(AtkCooldown());
+        }
     }
-    public void Dmg(float damage)
+    public IEnumerator Dmg(float damage)
     {
+        damageText.text = $"{damage}";
+
         Debug.Log("Enemy took " + damage + ". Remaining health: " + health);
         if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
@@ -91,10 +115,12 @@ public class EnemyScript : MonoBehaviour
 
         }
         else {
-            
+            yield return new WaitForSeconds(.5f);
+            damageText.text = "";
         }
 
     }
+
     public IEnumerator ColorShift()
     {//turns red on taking damage
      //turns back to white after .2 seconds if it doesn't die.
@@ -120,5 +146,14 @@ public class EnemyScript : MonoBehaviour
         canAtk = false;
         yield return new WaitForSeconds(atkInterval);
         canAtk = true;
+    }
+
+    public void Freeze(float frozenTime)
+    {
+        Debug.Log("FROZEN: " + gameObject.name + " for " + frozenTime + " seconds");
+
+        this.frozenTime = frozenTime;
+
+        frozen = true;
     }
 }

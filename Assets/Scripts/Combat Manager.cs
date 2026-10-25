@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 //using UnityEditor.VisionOS;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 
 public class CombatManager : MonoBehaviour
@@ -10,6 +11,10 @@ public class CombatManager : MonoBehaviour
     private PlayerScript player;
     private PlayerMovement playerMovement;
     private EnemyScript currentEnemy;
+
+    // Prefabs
+    [SerializeField] private GameObject freezePrefab;
+    [SerializeField] private GameObject smokePrefab;
 
     // Setters
     public void SetPlayer(PlayerScript player) { this.player = player; }
@@ -42,6 +47,8 @@ public class CombatManager : MonoBehaviour
     {
         currentEnemy = enemy.GetComponent<EnemyScript>();
 
+        SpellController.Instance.ActivateSpellButtons(enemy);
+
         StartCoroutine(CombatLoop());
     }
 
@@ -51,7 +58,7 @@ public class CombatManager : MonoBehaviour
 
         while (bothAlive)
         {
-            yield return StartCoroutine(player.TEMPAUTOATTACK(currentEnemy));
+            yield return StartCoroutine(player.ChooseAttack(currentEnemy));
 
             yield return new WaitForSeconds(1f);
 
@@ -79,6 +86,8 @@ public class CombatManager : MonoBehaviour
     {
         playerMovement.ExitCombat();
 
+        SpellController.Instance.DisableSpellButtons();
+
         currentEnemy = null;
     }
 
@@ -91,5 +100,32 @@ public class CombatManager : MonoBehaviour
         {
             return false;
         }
+    }
+
+
+
+
+
+
+    // CONDITIONS
+
+    public void FreezeEnemy()
+    {
+        Vector3 spawnPosition = currentEnemy.transform.position;
+
+        GameObject spawnedFreeze = Instantiate(freezePrefab, spawnPosition, Quaternion.identity);
+        FreezeScript freezeScript = spawnedFreeze.GetComponent<FreezeScript>();
+
+        freezeScript.Freeze(currentEnemy);
+    }
+
+    public void HidePlayer()
+    {
+        Vector3 spawnPosition = player.transform.position;
+
+        GameObject spawnedSmoke = Instantiate(smokePrefab, spawnPosition, Quaternion.identity);
+        SmokeScript smokeScript = spawnedSmoke.GetComponent<SmokeScript>();
+
+        smokeScript.Hide(player);
     }
 }

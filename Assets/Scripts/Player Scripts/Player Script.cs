@@ -1,21 +1,55 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using TMPro;
 public class PlayerScript : MonoBehaviour
 {
+    public static PlayerScript Instance;
+
     private float HP = 100;
     private float dmg = 2;
     public int gold = 0;
     private SpriteRenderer Spr;
     EnemyScript ES;
     private Animator animator;
+    private float smokeTime = 0f;
+
+    // Next attack
+    private bool fireball = false;
+    private bool smoke = false;
+
+    // Spell Prefabs
+    [SerializeField] private GameObject fireballPrefab;
+    [SerializeField] private GameObject smokePrefab;
+
+    // UI
+    [SerializeField] TMP_Text damageText;
 
 
 
     public bool TEMPATK = true;
 
+    //Setters
+    public void SetFireball(bool fire) { fireball = fire; }
+
     //Getters
     public float GetHealth() { return HP; }
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        SpellController.Instance.SetPlayer(gameObject.transform);
+        SpellController.Instance.SetPlayerScript(PlayerScript.Instance);
+
+        damageText.text = "";
+    }
 
     void Start()
     {
@@ -23,34 +57,35 @@ public class PlayerScript : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (currentEnemy == null)
-    //    {
-    //        try
-    //        {
-    //            currentEnemy = GameObject.FindWithTag("Enemy");
-    //            ES = currentEnemy.GetComponent<EnemyScript>();
-    //        }
-    //        catch 
-    //        { //Debug.Log("No Enemy to target");
-    //        }
-            
-    //    }
-    //    if (TEMPATK && currentEnemy != null && ES.health >= 0) { StartCoroutine(TEMPAUTOATTACK()); }
-        
-    //}
+    void Update()
+    {
+        if (smoke)
+        {
+            smokeTime -= Time.deltaTime;
+
+            if (smokeTime <= 0f)
+            {
+                smoke = false;
+            }
+        }
+    }
 
     //PLACEHOLDER METHOD
-    public IEnumerator TEMPAUTOATTACK(EnemyScript enemy)
+    public IEnumerator ChooseAttack(EnemyScript enemy)
     {
-        
+        if (fireball)
+            yield return StartCoroutine(FireballAttack(enemy));
+        else
+            yield return StartCoroutine(TEMPAUTOATTACK(enemy));
+    }
+
+    public IEnumerator TEMPAUTOATTACK(EnemyScript enemy)
+    {   
         TEMPATK = false;
 
         Debug.Log("Player attack: damaging enemy");
 
-        enemy.Dmg(dmg);
+        StartCoroutine(enemy.Dmg(dmg));
 
         Debug.Log("Player attack: playing animation");
 
@@ -90,19 +125,60 @@ public class PlayerScript : MonoBehaviour
 
     public IEnumerator TakeDamage(float damage)
     {
-        //Debug.Log("Ow! " + currentEnemy.name + " dealt " + damage + "!");
-        HP -= damage;
-        Spr.color = Color.red;
-        if (HP > 0)
+        if (!smoke)
         {
-            GameOver();
-        }
-        else
+            damageText.text = $"{damage}";
+
+            //Debug.Log("Ow! " + currentEnemy.name + " dealt " + damage + "!");
+            HP -= damage;
+            Spr.color = Color.red;
+            if (HP < 0)
+            {
+                GameOver();
+            }
+            else
+            {
+                yield return new WaitForSeconds(.5f);
+                Spr.color = Color.white;
+                damageText.text = "";
+            }
+        } else
         {
+            damageText.text = "0";
             yield return new WaitForSeconds(.5f);
-            Spr.color = Color.white;
+            damageText.text = "";
         }
     }
+
+
+
+
+
+
+    // spells
+    IEnumerator FireballAttack(EnemyScript enemy)
+    {
+        fireball = false;
+
+        Vector3 spawnPosition = enemy.transform.position;
+
+        GameObject spawnedFireball = Instantiate(fireballPrefab, spawnPosition, Quaternion.identity);
+        FireballScript fireballScript = spawnedFireball.GetComponent<FireballScript>();
+
+        yield return StartCoroutine(fireballScript.Fireball(enemy));
+    }
+
+    public void Hide(float smokeTime)
+    {
+        smoke = true;
+
+        this.smokeTime = smokeTime;
+    }
+
+
+
+
+
     
 
         
@@ -111,10 +187,5 @@ public class PlayerScript : MonoBehaviour
     {
         Destroy(gameObject);
         //and probably add ui 
-    }
-
-    public void SpawnNewEnemy()
-    {
-        //placeholder code, this may be put in another script
     }
 }

@@ -50,7 +50,7 @@ public class PlayerScript : MonoBehaviour
         SpellController.Instance.SetPlayer(gameObject.transform);
         SpellController.Instance.SetPlayerScript(PlayerScript.Instance);
 
-        damageText.text = "";
+        damageText.text = " ";
 
         //PlayerPrefs
         maxHP = PlayerPrefs.GetInt("PlayerHP", 20);
@@ -68,6 +68,7 @@ public class PlayerScript : MonoBehaviour
     {
         Spr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        damageText.text = " ";
     }
 
     void Update()

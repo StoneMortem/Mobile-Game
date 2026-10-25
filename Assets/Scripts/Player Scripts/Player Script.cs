@@ -1,13 +1,19 @@
 using UnityEngine;
 using System.Collections;
-using System;
 using TMPro;
+using UnityEngine.UI;
+
 public class PlayerScript : MonoBehaviour
 {
     public static PlayerScript Instance;
 
     private float HP = 100;
+    private float maxHP;
     private float dmg = 2;
+<<<<<<< Updated upstream
+=======
+    private float critChance = 2;
+>>>>>>> Stashed changes
     public int gold = 0;
     private SpriteRenderer Spr;
     EnemyScript ES;
@@ -24,6 +30,7 @@ public class PlayerScript : MonoBehaviour
 
     // UI
     [SerializeField] TMP_Text damageText;
+    private Slider healthBar;
 
 
 
@@ -49,6 +56,20 @@ public class PlayerScript : MonoBehaviour
         SpellController.Instance.SetPlayerScript(PlayerScript.Instance);
 
         damageText.text = "";
+<<<<<<< Updated upstream
+=======
+
+        // Player pref values
+        maxHP = PlayerPrefs.GetInt("PlayerHP", 20);
+        HP = maxHP;
+        dmg = PlayerPrefs.GetInt("PlayerDmg", 2);
+        critChance = PlayerPrefs.GetInt("PlayerCrit", 2);
+
+        // Health Slider
+        healthBar = GetComponentInChildren<Slider>();
+        healthBar.maxValue = maxHP;
+        healthBar.value = HP;
+>>>>>>> Stashed changes
     }
 
     void Start()
@@ -83,36 +104,28 @@ public class PlayerScript : MonoBehaviour
     {   
         TEMPATK = false;
 
-        Debug.Log("Player attack: damaging enemy");
-
-        StartCoroutine(enemy.Dmg(dmg));
-
-        Debug.Log("Player attack: playing animation");
-
-        animator.Play("Player_Attack_Up");
-
         // Wait for animation to finish
         yield return null;
-
-        Debug.Log("Player attack: waiting for animation");
-
+        animator.Play("Player_Attack_Up");
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-
-        Debug.Log("Current animation: " + state.fullPathHash);
-        Debug.Log("Animation length: " + state.length);
-
         yield return new WaitForSeconds(state.length);
 
-        Debug.Log("Player attack: animation finished");
+        int value = UnityEngine.Random.Range(1, 101);
+
+        if (value <= critChance)
+        {
+            StartCoroutine(enemy.Dmg(dmg * 2));
+        }
+        else
+        {
+            StartCoroutine(enemy.Dmg(dmg));
+        }
 
         animator.Play("Player_Idle");
 
         yield return StartCoroutine(Attacking());
 
-        // yield return new WaitForSeconds(.5f);
         TEMPATK = true;
-
-        Debug.Log("Player attack: coroutine finished");
     }
 
     public IEnumerator Attacking()
@@ -148,6 +161,8 @@ public class PlayerScript : MonoBehaviour
             yield return new WaitForSeconds(.5f);
             damageText.text = "";
         }
+
+        healthBar.value = HP;
     }
 
 

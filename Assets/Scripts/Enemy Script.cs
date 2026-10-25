@@ -1,11 +1,13 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 public class EnemyScript : MonoBehaviour
 {
     public float atkInterval;
     public float health;
+    public float maxHealth;
     public int level;
     public float dmg;
     public bool canAtk = true;
@@ -14,6 +16,7 @@ public class EnemyScript : MonoBehaviour
 
     // UI
     [SerializeField] TMP_Text damageText;
+    private Slider healthBar;
 
     //ADDING HANDLING FOR MULTIPLE ATTACKS LATER ON
 
@@ -35,11 +38,14 @@ public class EnemyScript : MonoBehaviour
     {
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        health = 10;
+        maxHealth = 10;
+        health = maxHealth;
         level = 1;
         dmg = level * 2;
-        
 
+        healthBar = GetComponentInChildren<Slider>();
+        healthBar.maxValue = maxHealth;
+        healthBar.value = health;
     }
 
     private void Start()
@@ -84,8 +90,6 @@ public class EnemyScript : MonoBehaviour
             anim.Play("Attack");
 
             yield return null;
-            AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
-            yield return new WaitForSeconds(state.length);
 
             // anim.Play("Idle");
 
@@ -107,18 +111,18 @@ public class EnemyScript : MonoBehaviour
         StartCoroutine(ColorShift());
         health -= damage;
 
-       
+        healthBar.value = health;
+
         if (health <= 0)
         {
             canAtk = false;
-            Die();
+            StartCoroutine(Die());
 
         }
         else {
             yield return new WaitForSeconds(.5f);
             damageText.text = "";
         }
-
     }
 
     public IEnumerator ColorShift()
@@ -130,12 +134,20 @@ public class EnemyScript : MonoBehaviour
     }
 
 
-    private void Die()
+    private IEnumerator Die()
     {
+
+        int gold = Random.Range(1, 6);
+        gold = gold * level;
+
         anim.Play("Death");
-        PS.gold += level * 2;
+        AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(state.length);
+
+        PS.gold += gold;
         Debug.Log("BLEHH!!! Player gained " + level*2 + "gold!");
         canAtk = false;
+
         Destroy(gameObject,.5f);
         
         

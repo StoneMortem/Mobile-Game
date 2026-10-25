@@ -3,7 +3,11 @@ using UnityEngine;
 public class SmokeScript : MonoBehaviour
 {
     private float smokeTimer = 5f; // Determined by upgrades later
-    private float cooldown = 20f; // Determined by upgrades later
+
+    void Awake()
+    {
+        smokeTimer = PlayerPrefs.GetInt("SreezeDuration", 3);
+    }
 
     // Update is called once per frame
     void Update()

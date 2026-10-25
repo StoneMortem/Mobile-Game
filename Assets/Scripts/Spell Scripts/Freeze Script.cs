@@ -4,7 +4,11 @@ using System.Collections;
 public class FreezeScript : MonoBehaviour
 {
     private float freezeTimer = 5f; // Determined by upgrades later
-    private float cooldown = 20f; // Determined by upgrades later
+
+    void Awake()
+    {
+        freezeTimer = PlayerPrefs.GetInt("FreezeDuration", 3);
+    }
 
     private void Update()
     {

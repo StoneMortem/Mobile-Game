@@ -12,9 +12,4 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public void DeleteSave()
-    {
-        PlayerPrefs.DeleteAll();
-    }
 }

@@ -1191,10 +1191,6 @@ MonoBehaviour:
   - {fileID: 5832791005977068484, guid: bd4cc2b81858705448e6749d3063a9be, type: 3}
   - {fileID: 3988622363265541609, guid: 04beb99b463fe4747be6121490a935f1, type: 3}
   - {fileID: 635328131451381182, guid: 5339cbdc69c5d474c93ee00fb4f5fef0, type: 3}
-  - {fileID: 7979076716220537573, guid: 1acca7c48e7e73f41aba34a314714681, type: 3}
-  - {fileID: 7372492805429827137, guid: f2bd4f80d9417dd429b7a99baf382621, type: 3}
-  - {fileID: 8992027542859922923, guid: 596882c4e53ef17438129409f6c5e4a0, type: 3}
-  - {fileID: 7463643377670365762, guid: 1133712b15c84b34cacb3b5d3cc0443a, type: 3}
   playerPrefab: {fileID: 7626503919488844529, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
   playerSpawner: {fileID: 1751229549}
   roomAmount: 2

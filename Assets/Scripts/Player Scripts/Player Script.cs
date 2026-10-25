@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections;
-using System;
+using UnityEngine.UI;
 using TMPro;
 public class PlayerScript : MonoBehaviour
 {
     public static PlayerScript Instance;
 
     private float HP = 100;
+    private float maxHP = 100;
     private float dmg = 2;
     private float dodge = 2;
     public int gold = 0;
@@ -25,7 +26,7 @@ public class PlayerScript : MonoBehaviour
 
     // UI
     [SerializeField] TMP_Text damageText;
-
+    private Slider healthBar;
 
 
     public bool TEMPATK = true;
@@ -51,9 +52,16 @@ public class PlayerScript : MonoBehaviour
 
         damageText.text = "";
 
-        HP = PlayerPrefs.GetInt("PlayerHP", 10);
+        //PlayerPrefs
+        maxHP = PlayerPrefs.GetInt("PlayerHP", 20);
+        HP = maxHP;
         dmg = PlayerPrefs.GetInt("PlayerDmg", 2);
         dodge = PlayerPrefs.GetInt("Dodge", 2);
+
+        // UI
+        healthBar = GetComponentInChildren<Slider>();
+        healthBar.maxValue = maxHP;
+        healthBar.value = HP;
     }
 
     void Start()
@@ -88,36 +96,19 @@ public class PlayerScript : MonoBehaviour
     {   
         TEMPATK = false;
 
-        Debug.Log("Player attack: damaging enemy");
-
         StartCoroutine(enemy.Dmg(dmg));
-
-        Debug.Log("Player attack: playing animation");
 
         animator.Play("Player_Attack_Up");
 
         // Wait for animation to finish
         yield return null;
-
-        Debug.Log("Player attack: waiting for animation");
-
         AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-
-        Debug.Log("Current animation: " + state.fullPathHash);
-        Debug.Log("Animation length: " + state.length);
-
         yield return new WaitForSeconds(state.length);
-
-        Debug.Log("Player attack: animation finished");
-
         animator.Play("Player_Idle");
 
         yield return StartCoroutine(Attacking());
 
-        // yield return new WaitForSeconds(.5f);
         TEMPATK = true;
-
-        Debug.Log("Player attack: coroutine finished");
     }
 
     public IEnumerator Attacking()
@@ -138,7 +129,9 @@ public class PlayerScript : MonoBehaviour
 
             //Debug.Log("Ow! " + currentEnemy.name + " dealt " + damage + "!");
             HP -= damage;
+            healthBar.value = HP;
             Spr.color = Color.red;
+
             if (HP < 0)
             {
                 GameOver();

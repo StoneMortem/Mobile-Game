@@ -1,11 +1,13 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 public class EnemyScript : MonoBehaviour
 {
     public float atkInterval;
     public float health;
+    private float maxHealth = 10;
     public int level;
     public float dmg;
     public bool canAtk = true;
@@ -14,6 +16,7 @@ public class EnemyScript : MonoBehaviour
 
     // UI
     [SerializeField] TMP_Text damageText;
+    private Slider healthBar;
 
     //ADDING HANDLING FOR MULTIPLE ATTACKS LATER ON
 
@@ -35,11 +38,15 @@ public class EnemyScript : MonoBehaviour
     {
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        health = 10;
+        maxHealth = 10;
+        health = maxHealth;
         level = 1;
         dmg = level * 2;
-        
 
+        // UI
+        healthBar = GetComponentInChildren<Slider>();
+        healthBar.maxValue = maxHealth;
+        healthBar.value = health;
     }
 
     private void Start()
@@ -106,8 +113,8 @@ public class EnemyScript : MonoBehaviour
         
         StartCoroutine(ColorShift());
         health -= damage;
+        healthBar.value = health;
 
-       
         if (health <= 0)
         {
             canAtk = false;

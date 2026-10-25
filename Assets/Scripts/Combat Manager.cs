@@ -3,7 +3,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using TMPro;
 
 
 public class CombatManager : MonoBehaviour
@@ -13,15 +12,9 @@ public class CombatManager : MonoBehaviour
     private PlayerMovement playerMovement;
     private EnemyScript currentEnemy;
 
-    // Bool
-    bool playerDeath = false;
-
     // Prefabs
     [SerializeField] private GameObject freezePrefab;
     [SerializeField] private GameObject smokePrefab;
-
-    // UI
-    [SerializeField] private TextMeshProUGUI completeText;
 
     // Setters
     public void SetPlayer(PlayerScript player) { this.player = player; }
@@ -91,15 +84,9 @@ public class CombatManager : MonoBehaviour
 
     public void EndCombat()
     {
-        if (!playerDeath)
-        {
-            playerMovement.ExitCombat();
-            SpellController.Instance.DisableSpellButtons();
-        } else
-        {
-            DungeonCompleteScript.Instance.DungeonFailed();
+        playerMovement.ExitCombat();
 
-        }
+        SpellController.Instance.DisableSpellButtons();
 
         currentEnemy = null;
     }
@@ -111,9 +98,6 @@ public class CombatManager : MonoBehaviour
             return true;
         } else
         {
-            if (player.GetHealth() < 0)
-                playerDeath = true;
-
             return false;
         }
     }

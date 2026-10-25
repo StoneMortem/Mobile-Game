@@ -132,13 +132,16 @@ public class PlayerScript : MonoBehaviour
             HP -= damage;
             healthBar.value = HP;
             Spr.color = Color.red;
-            yield return new WaitForSeconds(.5f);
-            Spr.color = Color.white;
-            damageText.text = "";
 
-            if (HP <= 0)
+            if (HP < 0)
             {
-                StartCoroutine(GameOver());
+                GameOver();
+            }
+            else
+            {
+                yield return new WaitForSeconds(.5f);
+                Spr.color = Color.white;
+                damageText.text = "";
             }
         } else
         {
@@ -181,14 +184,9 @@ public class PlayerScript : MonoBehaviour
 
         
 
-    public IEnumerator GameOver()
+    public void GameOver()
     {
-        animator.Play("Player_Die");
-
-        // Wait for animation to finish
-        yield return null;
-        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-        yield return new WaitForSeconds(state.length);
-        
+        Destroy(gameObject);
+        //and probably add ui 
     }
 }

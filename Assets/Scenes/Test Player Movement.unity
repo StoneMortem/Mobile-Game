@@ -523,12 +523,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136698461}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1776938, y: 2.1776938, z: 2.1776938}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 597899899}
+  m_Father: {fileID: 2053311336}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 7626503919488844529, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
   playerSpawner: {fileID: 1751229549}
   roomAmount: 2
-  dungeonCompleteCanvas: {fileID: 597899895}
+  dungeonCompleteText: {fileID: 136698463}
 --- !u!1 &458514277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,7 +1788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &597899896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,7 +1865,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 136698462}
   - {fileID: 1268906277}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2462,6 +2461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CombatManager
   freezePrefab: {fileID: 7411958787435584164, guid: 0b81703612626164fa8a6ad92f6982e3, type: 3}
   smokePrefab: {fileID: 5039506036672770471, guid: 829c2422620f9a5439171d80fb7adb8e, type: 3}
+  completeText: {fileID: 136698463}
 --- !u!1 &810638577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4248,7 +4248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1471063357
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5987,6 +5987,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 136698462}
   - {fileID: 837085931}
   - {fileID: 1968610895}
   - {fileID: 192305880}

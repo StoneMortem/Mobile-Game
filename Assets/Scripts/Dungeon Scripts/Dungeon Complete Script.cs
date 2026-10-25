@@ -1,13 +1,28 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using TMPro;
 
 public class DungeonCompleteScript : MonoBehaviour
 {
-    private GameObject dungeonCompleteCanvas;
+    // Singleton
+    public static DungeonCompleteScript Instance;
+
+    private TextMeshProUGUI dungeonCompleteText;
 
     // SETTERS
-    public void SetDungeonCompleteCanvas(GameObject dungeonCompleteCanvas) { this.dungeonCompleteCanvas = dungeonCompleteCanvas; }
+    public void SetDungeonCompleteText(TextMeshProUGUI dungeonCompleteText) { this.dungeonCompleteText = dungeonCompleteText; }
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,20 +30,26 @@ public class DungeonCompleteScript : MonoBehaviour
         {
             CameraScript.Instance.SetFollowPlayer(false);
 
-            dungeonCompleteCanvas.SetActive(true);
+            dungeonCompleteText.text = " ";
 
             int level = PlayerPrefs.GetInt("Level", 1);
             PlayerPrefs.SetInt("Level", level + 1);
 
-            StartCoroutine(ToUpgradeScreen());
+            StartCoroutine(ToUpgradeScreen(4f));
         }
     }
 
-    private IEnumerator ToUpgradeScreen()
+    private IEnumerator ToUpgradeScreen(float linger)
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(linger);
 
         SceneManager.LoadSceneAsync(3);
+    }
+
+    public void DungeonFailed()
+    {
+        dungeonCompleteText.text = "Dungeon Failed...";
+        StartCoroutine(ToUpgradeScreen(4f));
     }
 
 }

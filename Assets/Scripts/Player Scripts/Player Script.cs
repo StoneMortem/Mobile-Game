@@ -10,10 +10,7 @@ public class PlayerScript : MonoBehaviour
     private float HP = 100;
     private float maxHP;
     private float dmg = 2;
-<<<<<<< Updated upstream
-=======
     private float critChance = 2;
->>>>>>> Stashed changes
     public int gold = 0;
     private SpriteRenderer Spr;
     EnemyScript ES;
@@ -56,8 +53,6 @@ public class PlayerScript : MonoBehaviour
         SpellController.Instance.SetPlayerScript(PlayerScript.Instance);
 
         damageText.text = "";
-<<<<<<< Updated upstream
-=======
 
         // Player pref values
         maxHP = PlayerPrefs.GetInt("PlayerHP", 20);
@@ -69,7 +64,6 @@ public class PlayerScript : MonoBehaviour
         healthBar = GetComponentInChildren<Slider>();
         healthBar.maxValue = maxHP;
         healthBar.value = HP;
->>>>>>> Stashed changes
     }
 
     void Start()

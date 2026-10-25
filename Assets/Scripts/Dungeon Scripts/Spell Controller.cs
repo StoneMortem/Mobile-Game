@@ -53,13 +53,10 @@ public class SpellController : MonoBehaviour
         combatManager = CombatManager.Instance;
 
         DisableSpellButtons();
-<<<<<<< Updated upstream
-=======
 
         fireballCooldown = PlayerPrefs.GetInt("FireballCooldown", 45) + 5;
         freezeCooldown = PlayerPrefs.GetInt("FreezeCooldown", 45);
         smokeCooldown = PlayerPrefs.GetInt("SmokeCooldown", 45);
->>>>>>> Stashed changes
     }
 
     void Update()

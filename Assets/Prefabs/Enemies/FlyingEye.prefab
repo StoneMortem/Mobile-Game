@@ -390,6 +390,7 @@ MonoBehaviour:
   level: 0
   dmg: 0
   canAtk: 1
+  coinsPrefab: {fileID: 972840315977933120, guid: 35d5e1efe3e6d0149b4b47714fbe1536, type: 3}
   damageText: {fileID: 3535454982339033127}
   sr: {fileID: 0}
 --- !u!50 &8783570679899387781

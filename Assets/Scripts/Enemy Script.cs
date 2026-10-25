@@ -14,8 +14,6 @@ public class EnemyScript : MonoBehaviour
     private bool frozen = false;
     private float frozenTime = 0;
 
-    public GameObject coinsPrefab;
-
     // UI
     [SerializeField] TMP_Text damageText;
     private Slider healthBar;
@@ -146,11 +144,6 @@ public class EnemyScript : MonoBehaviour
         Debug.Log("BLEHH!!! Player gained " + level*2 + "gold!");
         canAtk = false;
         Destroy(gameObject,.5f);
-
-        if(coinsPrefab != null)
-        {
-            Instantiate(coinsPrefab, transform.position, Quaternion.identity);
-        }
         
         
     }

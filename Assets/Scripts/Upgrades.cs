@@ -4,12 +4,12 @@ public class Upgrades : MonoBehaviour
 {
 
     [SerializeField] float dmgLvl = 1f;
-    [SerializeField] float spdLvl = 1f;
+    [SerializeField] float critLvl = 1f;
     [SerializeField] float hpLvl = 1f;
     [SerializeField] float skillSlots = 0f;
 
     public float dmgCost;
-    public float spdCost;
+    public float critCost;
     public float hpCost;
     public float skillCost;
 
@@ -28,7 +28,7 @@ public class Upgrades : MonoBehaviour
     {
         PS = GetComponent<PlayerScript>();
         dmgCost = dmgLvl * 10f * 1.5f;
-        spdCost = spdLvl * 10f * 1.5f;
+        critCost = critLvl * 10f * 1.5f;
         hpCost = hpLvl * 10f * 1.5f;
         skillCost = skillSlots * 10f * 1.5f;
     }
@@ -61,16 +61,16 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeAttackSpeed()
     {
-        if (PS.gold >= spdCost)
+        if (PS.gold >= critCost)
         {
-            spdLvl++;
-            spdCost = spdLvl * 10f * 1.5f;
-            PS.gold -= (int)spdCost;
-            Debug.Log("Attack speed upgraded to level " + spdLvl + ". Gold remaining: " + PS.gold);
+            critLvl++;
+            critCost = critLvl * 10f * 1.5f;
+            PS.gold -= (int)critCost;
+            Debug.Log("Attack speed upgraded to level " + critLvl + ". Gold remaining: " + PS.gold);
         }
         else
         {
-            Debug.Log("Not enough gold to upgrade attack speed. Gold needed: " + spdCost + ", Gold available: " + PS.gold);
+            Debug.Log("Not enough gold to upgrade attack speed. Gold needed: " + critCost + ", Gold available: " + PS.gold);
         }
     }
 

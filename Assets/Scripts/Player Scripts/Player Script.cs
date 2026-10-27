@@ -9,6 +9,9 @@ public class PlayerScript : MonoBehaviour
     private float HP = 100;
     private float maxHP = 100;
     private float dmg = 2;
+
+    public int lvl = 1;
+    public int kills = 0;
     private float dodge = 2;
     public int gold = 0;
     private SpriteRenderer Spr;

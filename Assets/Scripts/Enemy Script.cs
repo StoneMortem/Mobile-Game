@@ -36,12 +36,7 @@ public class EnemyScript : MonoBehaviour
 
     private void Awake()
     {
-        //Placeholder stat assignment
-        atkInterval = 1.5f;
-        maxHealth = 10;
-        health = maxHealth;
-        level = 1;
-        dmg = level * 2;
+        
 
         // UI
         healthBar = GetComponentInChildren<Slider>();
@@ -56,6 +51,12 @@ public class EnemyScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
             anim = GetComponent<Animator>();
         }
+        //Placeholder stat assignment
+        atkInterval = 1.5f;
+        maxHealth = 10 + 5*PS.lvl;
+        health = maxHealth;
+        level = PS.lvl;
+        dmg = level * 2;
     }
 
 
@@ -141,6 +142,12 @@ public class EnemyScript : MonoBehaviour
     {
         anim.Play("Death");
         PS.gold += level * 2;
+        PS.kills += 1;
+        if (PS.kills % 2 == 0)
+        {
+            PS.lvl += 1;
+            Debug.Log("Player leveled up to level " + PS.lvl + "!");
+        }
         Debug.Log("BLEHH!!! Player gained " + level*2 + "gold!");
         canAtk = false;
         Destroy(gameObject,.5f);

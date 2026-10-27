@@ -1479,7 +1479,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 350355082}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737384974}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgradeFZDuration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &350355082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3457,7 +3469,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 661303373}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737384974}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgradeFBDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &661303373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8017,7 +8041,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1414347050}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737384974}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgradeSDuration
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1414347050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8694,7 +8730,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1511370073}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737384974}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgradeFZCooldown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1511370073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9644,7 +9692,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1686576632}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737384974}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgradeSCooldown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1686576632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10079,13 +10139,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Upgrades
   dmgLvl: 1
-  spdLvl: 1
+  critLvl: 1
   hpLvl: 1
   skillSlots: 0
+  fb_damageLvl: 1
+  fb_cooldownLvl: 1
+  fz_durationLvl: 1
+  fz_cooldownLvl: 1
+  s_durationLvl: 1
+  s_cooldownLvl: 1
   dmgCost: 0
-  spdCost: 0
+  critCost: 0
   hpCost: 0
   skillCost: 0
+  fb_damageCost: 0
+  fb_cooldownCost: 0
+  fz_durationCost: 0
+  fz_cooldownCost: 0
+  s_durationCost: 0
+  s_cooldownCost: 0
+  spearCost: 0
+  shieldCost: 0
+  potionCost: 0
+  goldText: {fileID: 4664476205662294800}
+  hpText: {fileID: 1603756331}
+  dmgText: {fileID: 2038891222}
+  critText: {fileID: 1122859370}
+  fb_dText: {fileID: 831074938}
+  fb_cText: {fileID: 1483619267}
+  fz_dText: {fileID: 1299988474}
+  fz_cText: {fileID: 1856437326}
+  s_dText: {fileID: 288141074}
+  s_cText: {fileID: 1747300404}
   Skills: []
   UDisplay: {fileID: 0}
 --- !u!4 &1737384975
@@ -10515,7 +10600,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1803707504}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1737384974}
+        m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
+        m_MethodName: UpgradeFBCooldown
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1803707504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12086,7 +12183,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1737384974}
         m_TargetAssemblyTypeName: Upgrades, Assembly-CSharp
-        m_MethodName: UpgradeAttackSpeed
+        m_MethodName: UpgradeCrit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12687,6 +12784,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
+--- !u!114 &4664476205662294800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1262790264215488754, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
+  m_PrefabInstance: {fileID: 4664476205662294799}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &8583210141431860112
 PrefabInstance:
   m_ObjectHideFlags: 0

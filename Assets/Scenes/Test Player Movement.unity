@@ -2760,6 +2760,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 5933321514827026091, guid: b88dbbca1c987074daf48121c0a4d45c, type: 3}
+    - target: {fileID: 7958919943003733717, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958919943003733717, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7958919943003733717, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8207826651135635651, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2866,6 +2878,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8207826651135635651, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
   m_PrefabInstance: {fileID: 837085930}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &837085932 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1262790264215488754, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
+  m_PrefabInstance: {fileID: 837085930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1017197955
 GameObject:
   m_ObjectHideFlags: 0
@@ -6150,6 +6173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -348745104994279463, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
+      propertyPath: goldText
+      value: 
+      objectReference: {fileID: 837085932}
     - target: {fileID: 2861773360779078648, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
       propertyPath: normalRunSpeed
       value: 4

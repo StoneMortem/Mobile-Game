@@ -22,7 +22,9 @@ public class PlayerScript : MonoBehaviour
 
     //[SerializeField] private TextMeshProUGUI coinsText;
     public TextMeshProUGUI coinsText;
-    CoinsCounter CC;
+    //CoinsCounter CC;
+
+    
 
     // Next attack
     private bool fireball = false;
@@ -77,8 +79,20 @@ public class PlayerScript : MonoBehaviour
         Spr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         damageText.text = " ";
-        coinsText.text = "";
+
+        //CC = GetComponent<CoinsCounter>();
+        //coinsText.text = "";
         //CoinsCounter.coinsCount = 0;
+        GameObject coinObject = GameObject.FindWithTag("CoinUI");
+
+        if (coinObject != null)
+        {
+            coinsText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
+        }
+        else
+        {
+            Debug.Log("Could not find coin ui tagged!");
+        }
     }
 
     void Update()
@@ -107,7 +121,7 @@ public class PlayerScript : MonoBehaviour
             // Debug.Log("if coinsText not null");
             //coinsText.SetText($"(goldAmt.ToString())");
             //coinsText.text = goldAmt.ToString();
-            CoinsCounter.coinsCount = goldAmt;
+            //CC.coinsCount = goldAmt;
             UpdateCoinsCounter();
            /* if(coinsText.text != null)
             {
@@ -251,16 +265,22 @@ public class PlayerScript : MonoBehaviour
         if (coinsText != null)
             {
                 Debug.Log("update coin if");
-                coinsText.text = "Coins: " + CoinsCounter.coinsCount; 
-            }
+                //coinsText.text = "Coins: " + CC.coinsCount;
+                coinsText.text = goldAmt.ToString();
+        }
         else 
             {
                 Debug.Log("update coin else");
-                if (coinsText == null) { Debug.Log("coinsText is MISSING"); }
-                if (CoinsCounter.coinsCount.ToString() == null) { Debug.Log("coinsCount is missing"); }
-                if (coinsText.text == null) { Debug.Log("coinsText text is MISSING"); }
-            coinsText.text = CoinsCounter.coinsCount.ToString();  
-            }
+            //if (coinsText == null) { Debug.Log("coinsText is MISSING"); }
+            //if (CC.coinsCount.ToString() == null) { Debug.Log("coinsCount is missing"); }
+            //if (goldAmt.ToString() == null) { Debug.Log("coinsCount is missing"); }
+            //if (coinsText.text == null) { Debug.Log("coinsText text is MISSING"); }
+            //coinsText.text = CC.coinsCount.ToString();
+            /*if (coinsText == null)
+            {
+                coinsText.text = "" + goldAmt;
+            }*/
+        }
 
         
         //if (coinsText.text != goldAmt.ToString()) { Debug.Log("Update coins"); coinsText.text = goldAmt.ToString(); }

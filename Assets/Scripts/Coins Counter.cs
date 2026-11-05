@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class CoinsCounter
 {
-    public static int coinsCount = 0;
+    public  int coinsCount = 0;
 }

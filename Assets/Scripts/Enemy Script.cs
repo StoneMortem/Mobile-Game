@@ -143,7 +143,7 @@ public class EnemyScript : MonoBehaviour
     private void Die()
     {
         anim.Play("Death");
-        //PS.gold += level * 2;
+        PS.goldAmt += level * 2;
         PS.kills += 1;
         if (PS.kills % 2 == 0)
         {

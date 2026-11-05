@@ -58,7 +58,7 @@ public class Upgrades : MonoBehaviour
     {
         PS = GetComponent<PlayerScript>();
 
-        //goldText.text = PS.gold.ToString();
+        goldText.text = PS.coinsText.text;
         dmgCost = dmgLvl * 10f * 1.5f;
         critCost = critLvl * 10f * 1.5f;
         hpCost = hpLvl * 10f * 1.5f;

@@ -4,17 +4,17 @@ using UnityEngine;
 public class Upgrades : MonoBehaviour
 {
 
-    [SerializeField] float dmgLvl = 1f;
-    [SerializeField] float critLvl = 1f;
-    [SerializeField] float hpLvl = 1f;
-    [SerializeField] float skillSlots = 0f;
+    [SerializeField] int dmgLvl = 1;
+    [SerializeField] int critLvl = 1;
+    [SerializeField] int hpLvl = 1;
+    [SerializeField] int skillSlots = 0;
 
-    [SerializeField] float fb_damageLvl = 1f;
-    [SerializeField] float fb_cooldownLvl = 1f;
-    [SerializeField] float fz_durationLvl = 1f;
-    [SerializeField] float fz_cooldownLvl = 1f;
-    [SerializeField] float s_durationLvl = 1f;
-    [SerializeField] float s_cooldownLvl = 1f;
+    [SerializeField] int fb_damageLvl = 1;
+    [SerializeField] int fb_cooldownLvl = 1;
+    [SerializeField] int fz_durationLvl = 1;
+    [SerializeField] int fz_cooldownLvl = 1;
+    [SerializeField] int s_durationLvl = 1;
+    [SerializeField] int s_cooldownLvl = 1;
 
     public float dmgCost;
     public float critCost;
@@ -32,16 +32,31 @@ public class Upgrades : MonoBehaviour
     public float shieldCost;
     public float potionCost;
 
+    #region text elements
     public TMP_Text goldText;
     public TMP_Text hpText;
+    public TMP_Text hpDesc;
     public TMP_Text dmgText;
+    public TMP_Text dmgDesc;
     public TMP_Text critText;
+    public TMP_Text critDesc;
     public TMP_Text fb_dText;
     public TMP_Text fb_cText;
+    public TMP_Text fb_Desc;
     public TMP_Text fz_dText;
     public TMP_Text fz_cText;
+    public TMP_Text fz_Desc;
     public TMP_Text s_dText;
     public TMP_Text s_cText;
+    public TMP_Text s_Desc;
+
+    public TMP_Text spearDesc;
+    public TMP_Text shieldDesc;
+    public TMP_Text potionDesc;
+
+
+    #endregion
+
 
     public string[] Skills;
 
@@ -57,6 +72,10 @@ public class Upgrades : MonoBehaviour
     void Start()
     {
         PS = GetComponent<PlayerScript>();
+
+        PS.InitStats();
+        InitDescriptions();
+        
 
         //goldText.text = PS.gold.ToString();
         dmgCost = dmgLvl * 10f * 1.5f;
@@ -75,7 +94,10 @@ public class Upgrades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if (PS == null)
+        {
+            PS = GetComponent<PlayerScript>();
+        }
         hpText.text = hpCost.ToString();
         dmgText.text = dmgCost.ToString();
         critText.text = critCost.ToString();
@@ -85,6 +107,20 @@ public class Upgrades : MonoBehaviour
         fz_cText.text = fz_cooldownCost.ToString();
         s_dText.text = s_durationCost.ToString();
         s_cText.text = s_cooldownCost.ToString();
+    }
+
+    public void InitDescriptions()
+    {
+        hpDesc.text = "Increases your maximum health by 10 points" +
+            "\nHP: " + (20 + (PS.hpLvl*10)   + " -> " + (20 + (PS.hpLvl +1)*10));
+        dmgDesc.text = "Increases your overall damage by 25%" + "\nDMG MULT: " + 1+( PS.dmgLvl*.25) + "x -> " + 1+((PS.dmgLvl + 1)*.25) + "x";
+        critDesc.text = "Increases your critical hit chance by 1%." +"\n CRT CHANCE: " +  PS.critLvl + "%  -> " + (PS.critLvl + 1) +"%";
+        fb_Desc.text = "Summons a fireball to deal damage after a short delay.";
+        fz_Desc.text = "Freezes enemies, preventing them from attacking you for a short duration.";
+        s_Desc.text = "Throws a smoke bomb, making your enemies' attacks unable to hit you.";
+        spearDesc.text = "Increases the base damage of your spear attacks." + "\nDMG: " + (2 * PS.spearLvl) + " -> " + (2 * (PS.spearLvl + 1));
+        shieldDesc.text = "Reduces the damage you take from enemy attacks.";
+        potionDesc.text = "Restores a portion of your health when consumed.";
     }
 
     public void UpgradeDisplay()
@@ -97,29 +133,39 @@ public class Upgrades : MonoBehaviour
         if (PS.gold >= dmgCost)
         {
             dmgLvl++;
+            PS.dmgLvl++;
+            PS.SetDmg(2 * PS.dmgLvl * 1.25f);
             dmgCost = dmgLvl * 10f * 1.5f;
             PS.gold -= (int)dmgCost;
             Debug.Log("Damage upgraded to level " + dmgLvl + ". Gold remaining: " + PS.gold);
+            PS.dmgLvl++;
         }
         else
         {
             Debug.Log("Not enough gold to upgrade damage. Gold needed: " + dmgCost + ", Gold available: " + PS.gold);
         }
+        PS.SaveStats();
     }
 
     public void UpgradeCrit()
     {
+
         if (PS.gold >= critCost)
         {
             critLvl++;
             critCost = critLvl * 10f * 1.5f;
             PS.gold -= (int)critCost;
-            Debug.Log("Attack speed upgraded to level " + critLvl + ". Gold remaining: " + PS.gold);
+            PS.SetCrit(critLvl);
+            Debug.Log("Crit chance upgraded to level " + critLvl + ". Gold remaining: " + PS.gold);
         }
         else
         {
             Debug.Log("Not enough gold to upgrade crit. Gold needed: " + critCost + ", Gold available: " + PS.gold);
         }
+        //save changes
+        PS.SaveStats();
+        //reset descriptions to reflect new stats
+        InitDescriptions();
     }
 
     public void UpgradeHealth()
@@ -128,6 +174,8 @@ public class Upgrades : MonoBehaviour
         {
             hpLvl++;
             hpCost = hpLvl * 10f * 1.5f;
+            PS.hpLvl++;
+            PS.SetMaxHP(20 + (PS.hpLvl * 10));
             PS.gold -= (int)hpCost;
             Debug.Log("Health upgraded to level " + hpLvl + ". Gold remaining: " + PS.gold);
         }
@@ -135,6 +183,8 @@ public class Upgrades : MonoBehaviour
         {
             Debug.Log("Not enough gold to upgrade health. Gold needed: " + hpCost + ", Gold available: " + PS.gold);
         }
+        PS.SaveStats();
+        InitDescriptions();
     }
     public void IncreaseSkillSlots()
     {
@@ -156,6 +206,8 @@ public class Upgrades : MonoBehaviour
         if (PS.gold >= fb_damageCost)
         {
             fb_damageLvl++;
+            PS.fb_dmgLvl++;
+            PS.SetSpellStats();
             fb_damageCost = fb_damageLvl * 10f * 1.5f;
             PS.gold -= (int)fb_damageCost;
             Debug.Log("FB_damage upgraded to level " + fb_damageLvl + ". Gold remaining: " + PS.gold);
@@ -163,7 +215,9 @@ public class Upgrades : MonoBehaviour
         else
         {
             Debug.Log("Not enough gold, Gold available: " + PS.gold);
+
         }
+        InitDescriptions();
     }
 
     public void UpgradeFBCooldown()
@@ -171,6 +225,8 @@ public class Upgrades : MonoBehaviour
         if (PS.gold >= fb_cooldownCost)
         {
             fb_cooldownLvl++;
+            PS.fb_cdLvl++;
+            PS.SetSpellStats();
             fb_cooldownCost = fb_cooldownLvl * 10f * 1.5f;
             PS.gold -= (int)fb_cooldownCost;
             Debug.Log("FB_cooldown upgraded to level " + fb_cooldownLvl + ". Gold remaining: " + PS.gold);
@@ -179,6 +235,7 @@ public class Upgrades : MonoBehaviour
         {
             Debug.Log("Not enough gold, Gold available: " + PS.gold);
         }
+        InitDescriptions();
     }
 
     public void UpgradeFZDuration()
@@ -186,6 +243,8 @@ public class Upgrades : MonoBehaviour
         if (PS.gold >= fz_durationCost)
         {
             fz_durationLvl++;
+            PS.fz_durLvl++;
+            PS.SetSpellStats();
             fz_durationCost = fz_durationLvl * 10f * 1.5f;
             PS.gold -= (int)fz_durationCost;
             Debug.Log("FZ_duration upgraded to level " + fz_durationLvl + ". Gold remaining: " + PS.gold);
@@ -194,6 +253,7 @@ public class Upgrades : MonoBehaviour
         {
             Debug.Log("Not enough gold, Gold available: " + PS.gold);
         }
+        InitDescriptions();
     }
 
     public void UpgradeFZCooldown()
@@ -201,6 +261,8 @@ public class Upgrades : MonoBehaviour
         if (PS.gold >= fz_cooldownCost)
         {
             fz_cooldownLvl++;
+            PS.fz_cdLvl++;
+            PS.SetSpellStats();
             fz_cooldownCost = fz_cooldownLvl * 10f * 1.5f;
             PS.gold -= (int)fz_cooldownCost;
             Debug.Log("FZ_cooldown upgraded to level " + fz_cooldownLvl + ". Gold remaining: " + PS.gold);
@@ -209,6 +271,7 @@ public class Upgrades : MonoBehaviour
         {
             Debug.Log("Not enough gold, Gold available: " + PS.gold);
         }
+        InitDescriptions();
     }
 
     public void UpgradeSDuration()
@@ -216,6 +279,8 @@ public class Upgrades : MonoBehaviour
         if (PS.gold >= s_durationCost)
         {
             s_durationLvl++;
+            PS.s_durLvl++;
+            PS.SetSpellStats();
             s_durationCost = s_durationLvl * 10f * 1.5f;
             PS.gold -= (int)s_durationCost;
             Debug.Log("S_duration upgraded to level " + s_durationLvl + ". Gold remaining: " + PS.gold);
@@ -224,6 +289,7 @@ public class Upgrades : MonoBehaviour
         {
             Debug.Log("Not enough gold, Gold available: " + PS.gold);
         }
+        InitDescriptions();
     }
 
     public void UpgradeSCooldown()
@@ -231,6 +297,8 @@ public class Upgrades : MonoBehaviour
         if (PS.gold >= s_cooldownCost)
         {
             s_cooldownLvl++;
+            PS.s_cdLvl++;
+            PS.SetSpellStats();
             s_cooldownCost = s_cooldownLvl * 10f * 1.5f;
             PS.gold -= (int)s_cooldownCost;
             Debug.Log("S_cooldown upgraded to level " + s_cooldownLvl + ". Gold remaining: " + PS.gold);
@@ -239,6 +307,7 @@ public class Upgrades : MonoBehaviour
         {
             Debug.Log("Not enough gold, Gold available: " + PS.gold);
         }
+        InitDescriptions();
     }
 
 }

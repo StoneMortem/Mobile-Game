@@ -21,13 +21,11 @@ public class DungeonSpawner : MonoBehaviour
     [Header("UI")]
     [SerializeField] TextMeshProUGUI dungeonCompleteText;
 
-    void Awake()
-    {
-        dungeonCompleteText.text = " ";
-    }
+    
 
     void Start()
     {
+        dungeonCompleteText.text = " ";
         // Entrance is always first
         GameObject newRoomObject = Instantiate(entrancePrefab, new Vector3(nextRoom, 0f, 0f), Quaternion.identity);
         RoomScript newRoom = newRoomObject.GetComponent<RoomScript>();

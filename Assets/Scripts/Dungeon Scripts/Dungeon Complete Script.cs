@@ -13,6 +13,7 @@ public class DungeonCompleteScript : MonoBehaviour
 
     void Awake()
     {
+        SetDungeonCompleteText(GameObject.Find("Dungeon Complete Text").GetComponent<TextMeshProUGUI>());
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

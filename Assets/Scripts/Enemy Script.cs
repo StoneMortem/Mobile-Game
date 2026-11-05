@@ -14,6 +14,8 @@ public class EnemyScript : MonoBehaviour
     private bool frozen = false;
     private float frozenTime = 0;
 
+    Vector2 spawnPosition;
+
     // UI
     [SerializeField] TMP_Text damageText;
     private Slider healthBar;
@@ -25,7 +27,7 @@ public class EnemyScript : MonoBehaviour
     GameObject Player;
     PlayerScript PS;
     public SpriteRenderer sr;
-
+    public GameObject coinsPrefab;
 
     //later, we will probably have an ENUM dictating which enemy type spawns (and any particular stats unique to them)
     //but for now, I just want to create a generic enemy
@@ -141,7 +143,7 @@ public class EnemyScript : MonoBehaviour
     private void Die()
     {
         anim.Play("Death");
-        PS.gold += level * 2;
+        //PS.gold += level * 2;
         PS.kills += 1;
         if (PS.kills % 2 == 0)
         {
@@ -151,6 +153,8 @@ public class EnemyScript : MonoBehaviour
         Debug.Log("BLEHH!!! Player gained " + level*2 + "gold!");
         canAtk = false;
         Destroy(gameObject,.5f);
+        spawnPosition = new Vector2(transform.position.x, (float)-0.36);
+        Instantiate(coinsPrefab, spawnPosition, Quaternion.identity);
         
         
     }

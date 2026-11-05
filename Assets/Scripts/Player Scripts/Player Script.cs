@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using TMPro;
+using System.Diagnostics.Metrics;
 public class PlayerScript : MonoBehaviour
 {
     public static PlayerScript Instance;
@@ -13,11 +14,15 @@ public class PlayerScript : MonoBehaviour
     public int lvl = 1;
     public int kills = 0;
     private float dodge = 2;
-    public int gold = 0;
+    public int goldAmt = 0;
     private SpriteRenderer Spr;
     EnemyScript ES;
     private Animator animator;
     private float smokeTime = 0f;
+
+    //[SerializeField] private TextMeshProUGUI coinsText;
+    public TextMeshProUGUI coinsText;
+    CoinsCounter CC;
 
     // Next attack
     private bool fireball = false;
@@ -72,6 +77,8 @@ public class PlayerScript : MonoBehaviour
         Spr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         damageText.text = " ";
+        coinsText.text = "";
+        //CoinsCounter.coinsCount = 0;
     }
 
     void Update()
@@ -85,6 +92,32 @@ public class PlayerScript : MonoBehaviour
                 smoke = false;
             }
         }
+
+        /* if (coinsText != null && !string.IsNullOrEmpty(coinsText.text)) 
+         {
+             Debug.Log("amt of gold: " + goldAmt);
+             // Debug.Log("if coinsText not null");
+             coinsText.text = goldAmt.ToString();
+         }*/
+
+        //most recent correct 
+        if (goldAmt.ToString() != null)
+        {
+            Debug.Log("amt of gold: " + goldAmt);
+            // Debug.Log("if coinsText not null");
+            //coinsText.SetText($"(goldAmt.ToString())");
+            //coinsText.text = goldAmt.ToString();
+            CoinsCounter.coinsCount = goldAmt;
+            UpdateCoinsCounter();
+           /* if(coinsText.text != null)
+            {
+                coinsText.text = "" + goldAmt;
+            }*/
+           // else { coinsText.text += goldAmt.ToString(); }
+        }
+        else { Debug.Log("else"); }
+
+        //UpdateCoins();
     }
 
     //PLACEHOLDER METHOD
@@ -191,5 +224,46 @@ public class PlayerScript : MonoBehaviour
     {
         Destroy(gameObject);
         //and probably add ui 
+    }
+
+    /*private void OnTriggerEnter2D(Collider2D collider)
+    {
+            Debug.Log("player collider");
+            goldAmt = lvl * 2;
+            Destroy(gameObject);
+        
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coins"))
+        { 
+            Debug.Log("player collider");
+            goldAmt = lvl * 2;
+            Destroy(collision.gameObject);
+
+           // if (coinsText != null) { coinsText.text = goldAmt.ToString(); }
+        }
+    }
+
+    public void UpdateCoinsCounter()
+    {
+        if (coinsText != null)
+            {
+                Debug.Log("update coin if");
+                coinsText.text = "Coins: " + CoinsCounter.coinsCount; 
+            }
+        else 
+            {
+                Debug.Log("update coin else");
+                if (coinsText == null) { Debug.Log("coinsText is MISSING"); }
+                if (CoinsCounter.coinsCount.ToString() == null) { Debug.Log("coinsCount is missing"); }
+                if (coinsText.text == null) { Debug.Log("coinsText text is MISSING"); }
+            coinsText.text = CoinsCounter.coinsCount.ToString();  
+            }
+
+        
+        //if (coinsText.text != goldAmt.ToString()) { Debug.Log("Update coins"); coinsText.text = goldAmt.ToString(); }
+        //else { Debug.Log("Coins text is null"); }
     }
 }

@@ -2745,6 +2745,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 2053311336}
     m_Modifications:
     - target: {fileID: 1262790264215488754, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
+      propertyPath: m_text
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262790264215488754, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 17913470ade9e184cb8c2fb766ec3e65, type: 2}
@@ -5998,6 +6002,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5358245488600778164, guid: b2adbefa0bd7e5b44b30dd7ac753b1de, type: 3}
+      propertyPath: coinsPrefab
+      value: 
+      objectReference: {fileID: 8660319425814000635, guid: c0e7462874e3d9a4691a99e3a63679d2, type: 3}
     - target: {fileID: 5411966447077713983, guid: b2adbefa0bd7e5b44b30dd7ac753b1de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6175,6 +6183,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -348745104994279463, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
       propertyPath: goldText
+      value: 
+      objectReference: {fileID: 837085932}
+    - target: {fileID: -348745104994279463, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
+      propertyPath: coinsText
       value: 
       objectReference: {fileID: 837085932}
     - target: {fileID: 2861773360779078648, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}

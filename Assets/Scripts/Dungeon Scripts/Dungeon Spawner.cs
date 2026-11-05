@@ -2,6 +2,7 @@ using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
 
 public class DungeonSpawner : MonoBehaviour
 {
@@ -18,11 +19,11 @@ public class DungeonSpawner : MonoBehaviour
     private float nextRoom = 0f;
 
     [Header("UI")]
-    [SerializeField] GameObject dungeonCompleteCanvas;
+    [SerializeField] TextMeshProUGUI dungeonCompleteText;
 
     void Awake()
     {
-        dungeonCompleteCanvas.SetActive(false);
+        dungeonCompleteText.text = " ";
     }
 
     void Start()
@@ -101,7 +102,7 @@ public class DungeonSpawner : MonoBehaviour
         Transform completeDungeonTrigger = newRoomObject.transform.Find("Dungeon Complete Trigger");
         DungeonCompleteScript dcScript = completeDungeonTrigger.GetComponent<DungeonCompleteScript>();
 
-        dcScript.SetDungeonCompleteCanvas(dungeonCompleteCanvas);
+        dcScript.SetDungeonCompleteText(dungeonCompleteText);
     }
 
     void SpawnEnemy(Transform enemySpawn, RoomScript room)

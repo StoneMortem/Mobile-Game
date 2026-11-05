@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
     public static PlayerScript Instance;
 
     private float HP = 100;
-    private float maxHP = 100;
+    private float maxHP = 10;
     private float dmg = 2;
 
     public int lvl = 1;
@@ -135,22 +135,21 @@ public class PlayerScript : MonoBehaviour
             HP -= damage;
             healthBar.value = HP;
             Spr.color = Color.red;
+            yield return new WaitForSeconds(.5f);
+            Spr.color = Color.white;
+            damageText.text = "";
 
-            if (HP < 0)
+            if (HP <= 0)
             {
-                GameOver();
+                StartCoroutine(GameOver());
             }
             else
             {
                 yield return new WaitForSeconds(.5f);
-                Spr.color = Color.white;
-                damageText.text = "";
             }
         } else
         {
             damageText.text = "0";
-            yield return new WaitForSeconds(.5f);
-            damageText.text = "";
         }
     }
 
@@ -183,13 +182,19 @@ public class PlayerScript : MonoBehaviour
 
 
 
-    
 
-        
 
-    public void GameOver()
+
+
+    public IEnumerator GameOver()
     {
-        Destroy(gameObject);
-        //and probably add ui 
+        animator.Play("Player_Die");
+
+        // Wait for animation to finish
+        yield return null;
+        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+        yield return new WaitForSeconds(state.length);
+
+        DungeonCompleteScript.Instance.DungeonFailed();
     }
 }

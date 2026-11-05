@@ -56,7 +56,7 @@ public class EnemyScript : MonoBehaviour
         maxHealth = 10 + 5*PS.lvl;
         health = maxHealth;
         level = PS.lvl;
-        dmg = level * 2;
+        dmg = level * 5;
     }
 
 

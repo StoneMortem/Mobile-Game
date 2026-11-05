@@ -1,3 +1,4 @@
+using System.Xml;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -13,7 +14,7 @@ public class DungeonSpawner : MonoBehaviour
     [SerializeField] Transform playerSpawner;
 
     [Header("VALUES")]
-    [SerializeField] int roomAmount = 8;
+    int roomAmount = 8;
     private float nextRoom = 0f;
 
     [Header("UI")]
@@ -32,6 +33,8 @@ public class DungeonSpawner : MonoBehaviour
         float roomWidth = newRoom.GetWidth();
         nextRoom += roomWidth - 6; // Dunno why only this works, fix it later
 
+        roomAmount = RandomizeRoomCount();
+
         for (int i = 0; i < roomAmount; i++)
         {
             SpawnRoom();
@@ -48,6 +51,32 @@ public class DungeonSpawner : MonoBehaviour
 
         CombatManager.Instance.SetPlayer(playerScript);
         CombatManager.Instance.SetPlayerMovement(playerMovement);
+    }
+
+    int RandomizeRoomCount()
+    {
+        int count = 0;
+        int level = PlayerPrefs.GetInt("Level");
+
+        if (level <= 5)
+            count = Random.Range(1, 4);
+        else if (level <= 10)
+            count = Random.Range(2, 5);
+        else if (level <= 20)
+            count = Random.Range(3, 6);
+        else if (level <= 20)
+            count = Random.Range(3, 7);
+        else if (level <= 30)
+            count = Random.Range(4, 9);
+        else if (level <= 40)
+            count = Random.Range(5, 10);
+        else if (level <= 50)
+            count = Random.Range(6, 11);
+        else
+            count = Random.Range(7, 11);
+
+
+        return count;
     }
 
     void SpawnRoom()

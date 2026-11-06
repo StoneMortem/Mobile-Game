@@ -138,7 +138,7 @@ MonoBehaviour:
   dmg: 0
   canAtk: 1
   damageText: {fileID: 4894533865819521295}
-  sr: {fileID: 0}
+  coinsPrefab: {fileID: 3725490322399006524, guid: 264d3440103e9dd41a67bb73d213c5db, type: 3}
 --- !u!50 &1794730489136806522
 Rigidbody2D:
   serializedVersion: 5

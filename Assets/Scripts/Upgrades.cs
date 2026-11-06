@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -60,13 +61,14 @@ public class Upgrades : MonoBehaviour
 
     #endregion
 
-
     public string[] Skills;
 
     public GameObject UDisplay;
     bool displayActive = false;
 
     PlayerScript PS;
+    public int coinsAmt;
+    string playerCoins;
 
 
 
@@ -78,9 +80,44 @@ public class Upgrades : MonoBehaviour
 
         PS.InitStats();
         InitDescriptions();
-        
 
-        //goldText.text = PS.gold.ToString();
+        Debug.Log("Coins Amt: " + coinsAmt);
+        if (playerCoins == null)
+        {
+            Debug.Log("gold amt to string not null");
+            if (coinsAmt.ToString() != null)
+            {
+                coinsAmt = PlayerPrefs.GetInt("Saved Gold", 0);
+                Debug.Log("Coins Amt: " + coinsAmt);
+                playerCoins = coinsAmt.ToString();
+            }
+        }
+        if (playerCoins != null)
+        {
+            Debug.Log("coinsText not null");
+            playerCoins = coinsAmt.ToString();
+        }
+
+        GameObject coinObject = GameObject.FindWithTag("CoinUI");
+
+        if (coinObject != null)
+        {
+            Debug.Log("coin object not null");
+            goldText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
+            if (goldText.text != null)
+            {
+                goldText.text = playerCoins;
+            }
+            else
+            {
+                Debug.Log("ps gold amt to string is null");
+            }
+        }
+        else
+        {
+            Debug.Log("Could not find coin ui tagged!");
+        }
+
         dmgCost = PS.dmgLvl * 10f * 1.5f;
         critCost = PS.critLvl * 10f * 1.5f;
         hpCost = PS.hpLvl * 10f * 1.5f;
@@ -106,6 +143,7 @@ public class Upgrades : MonoBehaviour
         {
             PS = GetComponent<PlayerScript>();
         }
+        goldText.text = playerCoins;
         hpText.text = hpCost.ToString();
         dmgText.text = dmgCost.ToString();
         critText.text = critCost.ToString();
@@ -141,19 +179,19 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        if (PS.gold >= dmgCost)
+        if (PS.goldAmt >= dmgCost)
         {
             dmgLvl++;
             PS.dmgLvl++;
             PS.SetDmg(2 * PS.dmgLvl * 1.25f);
             dmgCost = dmgLvl * 10f * 1.5f;
-            PS.gold -= (int)dmgCost;
-            Debug.Log("Damage upgraded to level " + dmgLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)dmgCost;
+            Debug.Log("Damage upgraded to level " + dmgLvl + ". Gold remaining: " + PS.goldAmt);
             PS.dmgLvl++;
         }
         else
         {
-            Debug.Log("Not enough gold to upgrade damage. Gold needed: " + dmgCost + ", Gold available: " + PS.gold);
+            Debug.Log("Not enough gold to upgrade damage. Gold needed: " + dmgCost + ", Gold available: " + PS.goldAmt);
         }
         PS.SaveStats();
     }
@@ -161,17 +199,17 @@ public class Upgrades : MonoBehaviour
     public void UpgradeCrit()
     {
 
-        if (PS.gold >= critCost)
+        if (PS.goldAmt >= critCost)
         {
             critLvl++;
             critCost = critLvl * 10f * 1.5f;
-            PS.gold -= (int)critCost;
+            PS.goldAmt -= (int)critCost;
             PS.SetCrit(critLvl);
-            Debug.Log("Crit chance upgraded to level " + critLvl + ". Gold remaining: " + PS.gold);
+            Debug.Log("Crit chance upgraded to level " + critLvl + ". Gold remaining: " + PS.goldAmt);
         }
         else
         {
-            Debug.Log("Not enough gold to upgrade crit. Gold needed: " + critCost + ", Gold available: " + PS.gold);
+            Debug.Log("Not enough gold to upgrade crit. Gold needed: " + critCost + ", Gold available: " + PS.goldAmt);
         }
         //save changes
         PS.SaveStats();
@@ -181,52 +219,52 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeHealth()
     {
-        if (PS.gold >= hpCost)
+        if (PS.goldAmt >= hpCost)
         {
             hpLvl++;
             hpCost = hpLvl * 10f * 1.5f;
             PS.hpLvl++;
             PS.SetMaxHP(20 + (PS.hpLvl * 10));
-            PS.gold -= (int)hpCost;
-            Debug.Log("Health upgraded to level " + hpLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)hpCost;
+            Debug.Log("Health upgraded to level " + hpLvl + ". Gold remaining: " + PS.goldAmt);
         }
         else
         {
-            Debug.Log("Not enough gold to upgrade health. Gold needed: " + hpCost + ", Gold available: " + PS.gold);
+            Debug.Log("Not enough gold to upgrade health. Gold needed: " + hpCost + ", Gold available: " + PS.goldAmt);
         }
         PS.SaveStats();
         InitDescriptions();
     }
     public void IncreaseSkillSlots()
     {
-        if (PS.gold >= skillCost)
+        if (PS.goldAmt >= skillCost)
         {
             skillSlots++;
             skillCost *=  100f * 3f;
-            PS.gold -= (int)skillCost;
-            Debug.Log("Skill slots increased to " + skillSlots + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)skillCost;
+            Debug.Log("Skill slots increased to " + skillSlots + ". Gold remaining: " + PS.goldAmt);
         }
         else
         {
-            Debug.Log("Not enough gold to increase skill slots. Gold needed: " + skillCost + ", Gold available: " + PS.gold);
+            Debug.Log("Not enough gold to increase skill slots. Gold needed: " + skillCost + ", Gold available: " + PS.goldAmt);
         }
     }
 
     public void UpgradeFBDamage()
     {
-        if (PS.gold >= fb_damageCost)
+        if (PS.goldAmt >= fb_damageCost)
         {
             fb_damageLvl++;
             PS.fb_dmgLvl++;
             PS.SetSpellStats();
             
-            PS.gold -= (int)fb_damageCost;
-            Debug.Log("FB_damage upgraded to level " + fb_damageLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)fb_damageCost;
+            Debug.Log("FB_damage upgraded to level " + fb_damageLvl + ". Gold remaining: " + PS.goldAmt);
             fb_damageCost = fb_damageLvl * 10f * 1.5f;
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
 
         }
         InitDescriptions();
@@ -234,143 +272,143 @@ public class Upgrades : MonoBehaviour
 
     public void UpgradeFBCooldown()
     {
-        if (PS.gold >= fb_cooldownCost)
+        if (PS.goldAmt >= fb_cooldownCost)
         {
             fb_cooldownLvl++;
             PS.fb_cdLvl++;
             PS.SetSpellStats();
             
-            PS.gold -= (int)fb_cooldownCost;
-            Debug.Log("FB_cooldown upgraded to level " + fb_cooldownLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)fb_cooldownCost;
+            Debug.Log("FB_cooldown upgraded to level " + fb_cooldownLvl + ". Gold remaining: " + PS.goldAmt);
             fb_cooldownCost = fb_cooldownLvl * 10f * 1.5f;
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
         }
         InitDescriptions();
     }
 
     public void UpgradeFZDuration()
     {
-        if (PS.gold >= fz_durationCost)
+        if (PS.goldAmt >= fz_durationCost)
         {
             fz_durationLvl++;
             PS.fz_durLvl++;
             PS.SetSpellStats();
             
-            PS.gold -= (int)fz_durationCost;
-            Debug.Log("FZ_duration upgraded to level " + fz_durationLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)fz_durationCost;
+            Debug.Log("FZ_duration upgraded to level " + fz_durationLvl + ". Gold remaining: " + PS.goldAmt);
             fz_durationCost = fz_durationLvl * 10f * 1.5f;
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
         }
         InitDescriptions();
     }
 
     public void UpgradeFZCooldown()
     {
-        if (PS.gold >= fz_cooldownCost)
+        if (PS.goldAmt >= fz_cooldownCost)
         {
             fz_cooldownLvl++;
             PS.fz_cdLvl++;
             PS.SetSpellStats();
             
-            PS.gold -= (int)fz_cooldownCost;
-            Debug.Log("FZ_cooldown upgraded to level " + fz_cooldownLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)fz_cooldownCost;
+            Debug.Log("FZ_cooldown upgraded to level " + fz_cooldownLvl + ". Gold remaining: " + PS.goldAmt);
             fz_cooldownCost = fz_cooldownLvl * 10f * 1.5f;
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
         }
         InitDescriptions();
     }
 
     public void UpgradeSDuration()
     {
-        if (PS.gold >= s_durationCost)
+        if (PS.goldAmt >= s_durationCost)
         {
             s_durationLvl++;
             PS.s_durLvl++;
             PS.SetSpellStats();
             
-            PS.gold -= (int)s_durationCost;
+            PS.goldAmt -= (int)s_durationCost;
             s_durationCost = s_durationLvl * 10f * 1.5f;
-            Debug.Log("S_duration upgraded to level " + s_durationLvl + ". Gold remaining: " + PS.gold);
+            Debug.Log("S_duration upgraded to level " + s_durationLvl + ". Gold remaining: " + PS.goldAmt);
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
         }
         InitDescriptions();
     }
 
     public void UpgradeSCooldown()
     {
-        if (PS.gold >= s_cooldownCost)
+        if (PS.goldAmt >= s_cooldownCost)
         {
             s_cooldownLvl++;
             PS.s_cdLvl++;
             PS.SetSpellStats();
             
-            PS.gold -= (int)s_cooldownCost;
-            Debug.Log("S_cooldown upgraded to level " + s_cooldownLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)s_cooldownCost;
+            Debug.Log("S_cooldown upgraded to level " + s_cooldownLvl + ". Gold remaining: " + PS.goldAmt);
             s_cooldownCost = s_cooldownLvl * 10f * 1.5f;
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
         }
         InitDescriptions();
     }
 
     public void UpgradeSpear()
     {
-        if (PS.gold >= spearCost)
+        if (PS.goldAmt >= spearCost)
         {
             PS.spearLvl++;
             PS.SaveItemStats();
             
-            PS.gold -= (int)spearCost;
-            Debug.Log("Spear upgraded to level " + PS.spearLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)spearCost;
+            Debug.Log("Spear upgraded to level " + PS.spearLvl + ". Gold remaining: " + PS.goldAmt);
             spearCost = PS.spearLvl * 10f * 1.5f;
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
         }
         InitDescriptions();
     }
 
     public void UpgradeShield()
     {
-        if (PS.gold >= shieldCost)
+        if (PS.goldAmt >= shieldCost)
         {
             PS.shieldLvl++;
             PS.SaveItemStats();
 
-            PS.gold -= (int)shieldCost;
-            Debug.Log("Shield upgraded to level " + PS.shieldLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)shieldCost;
+            Debug.Log("Shield upgraded to level " + PS.shieldLvl + ". Gold remaining: " + PS.goldAmt);
             shieldCost = PS.shieldLvl * 10f * 1.5f;
         }
         else
         {
-            Debug.Log("Not enough gold, Gold available: " + PS.gold);
+            Debug.Log("Not enough gold, Gold available: " + PS.goldAmt);
         }
         InitDescriptions();
     }
 
     public void UpgradePotion()
     {
-        if (PS.gold >= potionCost)
+        if (PS.goldAmt >= potionCost)
         {
             PS.potionLvl++;
             PS.SaveItemStats();
-            PS.gold -= (int)potionCost;
-            Debug.Log("Potion upgraded to level " + PS.potionLvl + ". Gold remaining: " + PS.gold);
+            PS.goldAmt -= (int)potionCost;
+            Debug.Log("Potion upgraded to level " + PS.potionLvl + ". Gold remaining: " + PS.goldAmt);
             potionCost = PS.potionLvl * 10f * 1.5f;
         }
         else

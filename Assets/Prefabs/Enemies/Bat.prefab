@@ -505,7 +505,7 @@ MonoBehaviour:
   dmg: 0
   canAtk: 1
   damageText: {fileID: 8775617327758511009}
-  sr: {fileID: 0}
+  coinsPrefab: {fileID: 3725490322399006524, guid: 264d3440103e9dd41a67bb73d213c5db, type: 3}
 --- !u!50 &1104752581096458768
 Rigidbody2D:
   serializedVersion: 5
@@ -571,7 +571,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.56, y: 0.35}
+    oldSize: {x: 0.87, y: 0.87}
     newSize: {x: 0.56, y: 0.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

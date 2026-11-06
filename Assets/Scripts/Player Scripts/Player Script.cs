@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
@@ -17,7 +18,8 @@ public class PlayerScript : MonoBehaviour
     //Skill stats: Undecided
     public static PlayerScript Instance;
 
-    [SerializeField] private TMP_Text coinCounter;
+    //[SerializeField] private TMP_Text coinCounter;
+    public TextMeshProUGUI coinsText;
 
     #region PlayerStats
     private float HP = 20;
@@ -49,6 +51,8 @@ public class PlayerScript : MonoBehaviour
     EnemyScript ES;
     private Animator animator;
     private float smokeTime = 0f;
+
+    public int goldAmt;
 
     // Next attack
     private bool fireball = false;
@@ -114,9 +118,21 @@ public class PlayerScript : MonoBehaviour
             damageText.text = " ";
         }
 
-        if(coinCounter == null)
+        /*if(coinCounter == null)
         {
             coinCounter = GameObject.Find("Coin Amount").GetComponent<TMP_Text>();
+        }*/
+
+        GameObject coinObject = GameObject.FindWithTag("CoinUI");
+
+        if (coinObject != null)
+        {
+            coinsText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
+            goldAmt = PlayerPrefs.GetInt("Saved Gold", 0);
+        }
+        else
+        {
+            Debug.Log("Could not find coin ui tagged!");
         }
 
     }
@@ -132,6 +148,12 @@ public class PlayerScript : MonoBehaviour
                 smoke = false;
             }
         }
+
+        if (goldAmt.ToString() != null)
+        {
+            UpdateCoinsCounter();
+        }
+        else { Debug.Log("else"); }
     }
     public void InitStats()
     {
@@ -303,13 +325,31 @@ public class PlayerScript : MonoBehaviour
         this.smokeTime = smokeTime;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coins"))
+        {
+            Debug.Log("player collider");
+            Destroy(collision.gameObject);
+            goldAmt += lvl * 2;
+            PlayerPrefs.SetInt("Saved Gold", goldAmt);
+            PlayerPrefs.Save();
+        }
+    }
 
-
-
-
-
-
-
+    public void UpdateCoinsCounter()
+    {
+        if (coinsText != null)
+        {
+            coinsText.text = goldAmt.ToString();
+            PlayerPrefs.SetInt("Saved Gold", goldAmt);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            Debug.Log("update coin else");
+        }
+    }
 
     public IEnumerator GameOver()
     {
@@ -345,6 +385,6 @@ public class PlayerScript : MonoBehaviour
 
     public void LateUpdate()
     {
-        coinCounter.text = gold.ToString();
+       // coinCounter.text = gold.ToString();
     }
 }

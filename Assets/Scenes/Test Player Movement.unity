@@ -3119,7 +3119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1122454136
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3603,7 +3603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1268906277
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4299,6 +4299,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraScript
   cameraOffset: 3
+--- !u!212 &1672897122 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4609506908121639375, guid: b2adbefa0bd7e5b44b30dd7ac753b1de, type: 3}
+  m_PrefabInstance: {fileID: 1366978526454297504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1728118113
 GameObject:
   m_ObjectHideFlags: 0
@@ -5997,6 +6002,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5358245488600778164, guid: b2adbefa0bd7e5b44b30dd7ac753b1de, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 1672897122}
     - target: {fileID: 5411966447077713983, guid: b2adbefa0bd7e5b44b30dd7ac753b1de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

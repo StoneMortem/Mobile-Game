@@ -631,9 +631,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.21, y: 0.3}
-  m_Direction: 0
+  m_Offset: {x: -0.000000010451401, y: -0.08767271}
+  m_Size: {x: 0.3033657, y: 0.11843484}
+  m_Direction: 1
 --- !u!61 &3331390070291715991
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -668,7 +668,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.009640843}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -678,7 +678,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.2, y: 0.3}
+  m_Size: {x: 0.2, y: 0.27516145}
   m_EdgeRadius: 0
 --- !u!114 &2861773360779078648
 MonoBehaviour:
@@ -731,6 +731,19 @@ MonoBehaviour:
   lvl: 1
   kills: 0
   gold: 0
+  hpLvl: 1
+  dmgLvl: 1
+  critLvl: 1
+  dodgeLvl: 1
+  fb_dmgLvl: 1
+  fb_cdLvl: 1
+  fz_durLvl: 1
+  fz_cdLvl: 1
+  s_durLvl: 1
+  s_cdLvl: 1
+  spearLvl: 1
+  shieldLvl: 1
+  potionLvl: 1
   fireballPrefab: {fileID: 3714676693861118108, guid: aa7601ab7a8216d49bec3df74b792fe2, type: 3}
   smokePrefab: {fileID: 0}
   damageText: {fileID: 4863779775584943281}

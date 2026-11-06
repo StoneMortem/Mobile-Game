@@ -16,9 +16,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private GameObject freezePrefab;
     [SerializeField] private GameObject smokePrefab;
 
-    // Values
-    private bool playerDead = false;
-
     // Setters
     public void SetPlayer(PlayerScript player) { this.player = player; }
     public void SetPlayerMovement(PlayerMovement player) { playerMovement = player; }
@@ -87,13 +84,11 @@ public class CombatManager : MonoBehaviour
 
     public void EndCombat()
     {
-        SpellController.Instance.DisableSpellButtons();
-        currentEnemy = null;
+        playerMovement.ExitCombat();
 
-        if (!playerDead)
-        {
-            playerMovement.ExitCombat();
-        }
+        SpellController.Instance.DisableSpellButtons();
+
+        currentEnemy = null;
     }
 
     private bool CheckHealth()
@@ -101,12 +96,6 @@ public class CombatManager : MonoBehaviour
         if (currentEnemy.GetHealth() > 0 && player.GetHealth() > 0)
         {
             return true;
-        }
-        
-        if (player.GetHealth() <= 0)
-        {
-            playerDead = true;
-            return false;
         } else
         {
             return false;

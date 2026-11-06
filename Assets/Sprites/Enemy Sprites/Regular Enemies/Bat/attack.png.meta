@@ -180,10 +180,10 @@ TextureImporter:
       name: attack_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 87
-        height: 87
+        x: 21
+        y: 24
+        width: 50
+        height: 45
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,10 +202,10 @@ TextureImporter:
       name: attack_1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 0
-        width: 87
-        height: 87
+        x: 109
+        y: 23
+        width: 52
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +224,10 @@ TextureImporter:
       name: attack_2
       rect:
         serializedVersion: 2
-        x: 174
-        y: 0
-        width: 87
-        height: 87
+        x: 195
+        y: 21
+        width: 56
+        height: 23
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,10 +246,10 @@ TextureImporter:
       name: attack_3
       rect:
         serializedVersion: 2
-        x: 261
-        y: 0
-        width: 87
-        height: 87
+        x: 294
+        y: 21
+        width: 30
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +268,10 @@ TextureImporter:
       name: attack_4
       rect:
         serializedVersion: 2
-        x: 348
-        y: 0
-        width: 87
-        height: 87
+        x: 381
+        y: 21
+        width: 28
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -290,10 +290,10 @@ TextureImporter:
       name: attack_5
       rect:
         serializedVersion: 2
-        x: 435
-        y: 0
-        width: 87
-        height: 87
+        x: 468
+        y: 21
+        width: 28
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -312,10 +312,10 @@ TextureImporter:
       name: attack_6
       rect:
         serializedVersion: 2
-        x: 522
-        y: 0
-        width: 87
-        height: 87
+        x: 556
+        y: 22
+        width: 27
+        height: 31
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +334,10 @@ TextureImporter:
       name: attack_7
       rect:
         serializedVersion: 2
-        x: 609
-        y: 0
-        width: 87
-        height: 87
+        x: 641
+        y: 23
+        width: 33
+        height: 30
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -356,10 +356,10 @@ TextureImporter:
       name: attack_8
       rect:
         serializedVersion: 2
-        x: 696
-        y: 0
-        width: 87
-        height: 87
+        x: 728
+        y: 19
+        width: 55
+        height: 38
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -378,10 +378,10 @@ TextureImporter:
       name: attack_9
       rect:
         serializedVersion: 2
-        x: 783
-        y: 0
-        width: 87
-        height: 87
+        x: 814
+        y: 19
+        width: 49
+        height: 42
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,23 +397,23 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: attack_10
+      name: attack_12
       rect:
         serializedVersion: 2
-        x: 870
-        y: 0
-        width: 87
-        height: 87
+        x: 894
+        y: 24
+        width: 46
+        height: 40
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 84397f6be9844614292b79a1e4f382a1
-      internalID: 4918900733310490901
+      spriteID: 59c1e3b49af327350800000000000000
+      internalID: 6012938448837418133
       vertices: []
       indices: 
       edges: []
@@ -430,13 +430,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":11.0,"y":1.0},"gridSpriteSize":{"x":87.0,"y":87.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       attack_0: 827538889749247048
       attack_1: -5010287565412364656
       attack_10: 4918900733310490901
+      attack_11: -625631833852202795
+      attack_12: 6012938448837418133
       attack_2: -5463148037355797382
       attack_3: -5182820943178688908
       attack_4: 7402079830906333199

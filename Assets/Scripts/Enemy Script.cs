@@ -26,13 +26,8 @@ public class EnemyScript : MonoBehaviour
 
     GameObject Player;
     PlayerScript PS;
-<<<<<<< HEAD
     public SpriteRenderer sr;
     public GameObject coinsPrefab;
-=======
-    SpriteRenderer sr;
-
->>>>>>> main
 
     //later, we will probably have an ENUM dictating which enemy type spawns (and any particular stats unique to them)
     //but for now, I just want to create a generic enemy
@@ -49,9 +44,6 @@ public class EnemyScript : MonoBehaviour
         healthBar = GetComponentInChildren<Slider>();
         healthBar.maxValue = maxHealth;
         healthBar.value = health;
-
-        damageText = GetComponentInChildren<TMP_Text>();
-        damageText.text = " ";
     }
 
     private void Start()
@@ -63,12 +55,10 @@ public class EnemyScript : MonoBehaviour
         }
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        maxHealth = 5 + 5*PS.lvl;
+        maxHealth = 10 + 5*PS.lvl;
         health = maxHealth;
         level = PS.lvl;
         dmg = level * 2;
-
-        anim.Play("Idle");
     }
 
 
@@ -107,10 +97,11 @@ public class EnemyScript : MonoBehaviour
             AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
             yield return new WaitForSeconds(state.length);
 
+            // anim.Play("Idle");
+
             StartCoroutine(PS.TakeDamage(dmg));
             yield return new WaitForSeconds(.5f);
-
-            anim.Play("Idle");
+            //StartCoroutine(AtkCooldown());
         }
     }
     public IEnumerator Dmg(float damage)

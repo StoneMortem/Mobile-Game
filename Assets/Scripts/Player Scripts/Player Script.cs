@@ -2,56 +2,21 @@ using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
 using System.Diagnostics.Metrics;
 using Unity.VisualScripting;
 public class PlayerScript : MonoBehaviour
 {
-
-    //Stat notes:
-    //HP = 20 + (10 * HPLevel)
-    //DmgMultiplier = 1 + (0.25 * DmgLevel)
-    //Dmg (basic attack) = DmgMult * (2 * SpearLevel)
-    //Dmg (general) = DmgMult * (Base Dmg)
-    //Crit Chance = CritLevel%
-    //Dodge = 2 * (DodgeLevel)
-
-    //Skill stats: Undecided
     public static PlayerScript Instance;
 
-    [SerializeField] private TMP_Text coinCounter;
-
-    #region PlayerStats
-    private float HP = 20;
-    private float maxHP = 20;
-    private float dmgMult = 1;
+    private float HP = 100;
+    private float maxHP = 100;
+    private float dmg = 2;
 
     public int lvl = 1;
     public int kills = 0;
     private float dodge = 2;
-<<<<<<< HEAD
     public int goldAmt;
-=======
-    public int gold = 0;
-    public int hpLvl = 1;
-    public int dmgLvl = 1;
-    public int critLvl = 1;
-    public int dodgeLvl = 1;
-
-    public int fb_dmgLvl = 1;
-    public int fb_cdLvl = 1;
-    public int fz_durLvl = 1;
-    public int fz_cdLvl = 1;
-    public int s_durLvl = 1;
-    public int s_cdLvl = 1;
-
-    public int spearLvl = 1;
-    public int shieldLvl = 1;
-    public int potionLvl = 1;
-
-    #endregion
->>>>>>> main
     private SpriteRenderer Spr;
     EnemyScript ES;
     private Animator animator;
@@ -90,31 +55,25 @@ public class PlayerScript : MonoBehaviour
 
         Instance = this;
 
+        SpellController.Instance.SetPlayer(gameObject.transform);
+        SpellController.Instance.SetPlayerScript(PlayerScript.Instance);
 
-
+        damageText.text = " ";
 
         //PlayerPrefs
         maxHP = PlayerPrefs.GetInt("PlayerHP", 20);
         HP = maxHP;
-        dmgMult = PlayerPrefs.GetInt("PlayerDmg", 1);
+        dmg = PlayerPrefs.GetInt("PlayerDmg", 2);
         dodge = PlayerPrefs.GetInt("Dodge", 2);
-        InitStats();
 
         // UI
-        if (SceneManager.GetActiveScene().name != "Upgrades, Shop & Coins")
-        {
-            SpellController.Instance.SetPlayer(gameObject.transform);
-            SpellController.Instance.SetPlayerScript(PlayerScript.Instance);
-            healthBar = GetComponentInChildren<Slider>();
-            healthBar.maxValue = maxHP;
-            healthBar.value = HP;
-        }
-
+        healthBar = GetComponentInChildren<Slider>();
+        healthBar.maxValue = maxHP;
+        healthBar.value = HP;
     }
 
     void Start()
     {
-<<<<<<< HEAD
         Spr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         damageText.text = " ";
@@ -130,22 +89,6 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.Log("Could not find coin ui tagged!");
         }
-=======
-        if (SceneManager.GetActiveScene().name != "Upgrades, Shop & Coins")
-        {
-            damageText = GetComponentInChildren<TMP_Text>();
-            damageText.text = " ";
-            Spr = GetComponent<SpriteRenderer>();
-            animator = GetComponent<Animator>();
-            damageText.text = " ";
-        }
-
-        if(coinCounter == null)
-        {
-            coinCounter = GameObject.Find("Coin Amount").GetComponent<TMP_Text>();
-        }
-
->>>>>>> main
     }
 
     void Update()
@@ -166,64 +109,6 @@ public class PlayerScript : MonoBehaviour
         }
         else { Debug.Log("else"); }
     }
-    public void InitStats()
-    {
-        gold = PlayerPrefs.GetInt("Gold");
-        maxHP = PlayerPrefs.GetInt("PlayerHP", 20);
-        HP = PlayerPrefs.GetInt("PlayerHP", 20);
-        dmgMult = PlayerPrefs.GetInt("PlayerDmg", 1);
-        dodge = PlayerPrefs.GetInt("Dodge", 2);
-        lvl = PlayerPrefs.GetInt("Level", 1);
-        kills = PlayerPrefs.GetInt("Kills", 0);
-
-        hpLvl = PlayerPrefs.GetInt("HPLevel", 1);
-        dmgLvl = PlayerPrefs.GetInt("DmgLevel", 1);
-        critLvl = PlayerPrefs.GetInt("CritLevel", 1);
-        fb_dmgLvl = PlayerPrefs.GetInt("FB_DamageLevel", 1);
-        fb_cdLvl = PlayerPrefs.GetInt("FB_CooldownLevel", 1);
-        fz_durLvl = PlayerPrefs.GetInt("FZ_DurationLevel", 1);
-        fz_cdLvl = PlayerPrefs.GetInt("FZ_CooldownLevel", 1);
-        s_durLvl = PlayerPrefs.GetInt("S_DurationLevel", 1);
-        s_cdLvl = PlayerPrefs.GetInt("S_CooldownLevel", 1);
-        spearLvl = PlayerPrefs.GetInt("SpearLevel", 1);
-        shieldLvl = PlayerPrefs.GetInt("ShieldLevel", 1);
-        potionLvl = PlayerPrefs.GetInt("PotionLevel", 1);
-
-        PlayerPrefs.Save();
-    }
-
-    public void SaveStats()
-    {
-        PlayerPrefs.SetInt("Gold", gold);
-        PlayerPrefs.SetInt("PlayerHP", (int)maxHP);
-        PlayerPrefs.SetInt("PlayerDmg", (int)dmgMult);
-        PlayerPrefs.SetInt("Dodge", (int)dodge);
-        PlayerPrefs.SetInt("Level", lvl);
-        PlayerPrefs.SetInt("Kills", kills);
-        PlayerPrefs.SetInt("HPLevel", hpLvl);
-        PlayerPrefs.SetInt("DmgLevel", dmgLvl);
-        PlayerPrefs.SetInt("CritLevel", critLvl);
-        PlayerPrefs.Save();
-    }
-
-    public void SetSpellStats()
-    {
-        PlayerPrefs.SetInt("FB_DamageLevel", fb_dmgLvl);
-        PlayerPrefs.SetInt("FB_CooldownLevel", fb_cdLvl);
-        PlayerPrefs.SetInt("FZ_DurationLevel", fz_durLvl);
-        PlayerPrefs.SetInt("FZ_CooldownLevel", fz_cdLvl);
-        PlayerPrefs.SetInt("S_DurationLevel", s_durLvl);
-        PlayerPrefs.SetInt("S_CooldownLevel", s_cdLvl);
-        PlayerPrefs.Save();
-    }
-
-    public void SaveItemStats()
-    {
-        PlayerPrefs.SetInt("SpearLevel", spearLvl);
-        PlayerPrefs.SetInt("ShieldLevel", shieldLvl);
-        PlayerPrefs.SetInt("PotionLevel", potionLvl);
-        PlayerPrefs.Save();
-    }
 
     //PLACEHOLDER METHOD
     public IEnumerator ChooseAttack(EnemyScript enemy)
@@ -235,24 +120,10 @@ public class PlayerScript : MonoBehaviour
     }
 
     public IEnumerator TEMPAUTOATTACK(EnemyScript enemy)
-    {
+    {   
         TEMPATK = false;
 
-
-        //damage calculation: Base Damage (Spear damage) * Dmg Mult , then roll crit chance to see if crit occurs, if so double damage
-        int randomNumber = UnityEngine.Random.Range(1, 101);
-        if (randomNumber <= critLvl)
-        {
-            
-            
-            Debug.Log("CRITICAL HIT! Dealt " + (2 * dmgMult * (spearLvl * 2)) + " damage to " + enemy.name);
-            StartCoroutine(enemy.Dmg(2*(dmgMult)*(spearLvl*2)));
-        }
-        else
-        {
-            StartCoroutine(enemy.Dmg(dmgMult * (spearLvl * 2)));
-        }
-        
+        StartCoroutine(enemy.Dmg(dmg));
 
         animator.Play("Player_Attack_Up");
 
@@ -287,21 +158,22 @@ public class PlayerScript : MonoBehaviour
             HP -= damage;
             healthBar.value = HP;
             Spr.color = Color.red;
-            yield return new WaitForSeconds(.5f);
-            Spr.color = Color.white;
-            damageText.text = "";
 
-            if (HP <= 0)
+            if (HP < 0)
             {
-                StartCoroutine(GameOver());
+                GameOver();
             }
             else
             {
                 yield return new WaitForSeconds(.5f);
+                Spr.color = Color.white;
+                damageText.text = "";
             }
         } else
         {
             damageText.text = "0";
+            yield return new WaitForSeconds(.5f);
+            damageText.text = "";
         }
     }
 
@@ -337,7 +209,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
     public void UpdateCoinsCounter()
     {
         if (coinsText != null)
@@ -351,49 +222,10 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("update coin else");
         }
     }
-=======
 
-
-
-
->>>>>>> main
-
-
-
-    public IEnumerator GameOver()
+    public void GameOver()
     {
-        animator.Play("Player_Die");
-
-        // Wait for animation to finish
-        yield return null;
-        AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
-        yield return new WaitForSeconds(state.length);
-
-        DungeonCompleteScript.Instance.DungeonFailed();
-    }
-
-    public void SetDmg(float newDmg)
-    {
-        dmgMult = newDmg;
-    }
-
-    public void SetMaxHP(float newHP) {
-        maxHP = newHP;
-        HP = newHP;
-        
-    }
-
-    public void SetDodge(float newDodge)
-    {
-        dodge = newDodge;
-    }
-    public void SetCrit(int newCrit)
-    {
-        critLvl = newCrit;
-    }
-
-    public void LateUpdate()
-    {
-        coinCounter.text = gold.ToString();
+        Destroy(gameObject);
+        //and probably add ui 
     }
 }

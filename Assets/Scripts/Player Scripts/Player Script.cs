@@ -17,6 +17,8 @@ public class PlayerScript : MonoBehaviour
     //Skill stats: Undecided
     public static PlayerScript Instance;
 
+    [SerializeField] private TMP_Text coinCounter;
+
     #region PlayerStats
     private float HP = 20;
     private float maxHP = 20;
@@ -87,6 +89,7 @@ public class PlayerScript : MonoBehaviour
         HP = maxHP;
         dmgMult = PlayerPrefs.GetInt("PlayerDmg", 1);
         dodge = PlayerPrefs.GetInt("Dodge", 2);
+        InitStats();
 
         // UI
         if (SceneManager.GetActiveScene().name != "Upgrades, Shop & Coins")
@@ -109,6 +112,11 @@ public class PlayerScript : MonoBehaviour
             Spr = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             damageText.text = " ";
+        }
+
+        if(coinCounter == null)
+        {
+            coinCounter = GameObject.Find("Coin Amount").GetComponent<TMP_Text>();
         }
 
     }
@@ -317,7 +325,7 @@ public class PlayerScript : MonoBehaviour
     public void SetMaxHP(float newHP) {
         maxHP = newHP;
         HP = newHP;
-        healthBar.maxValue = newHP;
+        
     }
 
     public void SetDodge(float newDodge)
@@ -327,5 +335,10 @@ public class PlayerScript : MonoBehaviour
     public void SetCrit(int newCrit)
     {
         critLvl = newCrit;
+    }
+
+    public void LateUpdate()
+    {
+        coinCounter.text = gold.ToString();
     }
 }

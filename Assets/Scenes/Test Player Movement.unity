@@ -6185,6 +6185,10 @@ PrefabInstance:
       propertyPath: goldText
       value: 
       objectReference: {fileID: 837085932}
+    - target: {fileID: -348745104994279463, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
+      propertyPath: coinCounter
+      value: 
+      objectReference: {fileID: 837085932}
     - target: {fileID: 2861773360779078648, guid: a6cb8c6de1fc2bc4096262f8878ba1e4, type: 3}
       propertyPath: normalRunSpeed
       value: 4

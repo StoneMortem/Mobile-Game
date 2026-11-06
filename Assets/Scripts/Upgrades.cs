@@ -54,22 +54,15 @@ public class Upgrades : MonoBehaviour
     string playerCoins;
 
 
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //PS = GetComponent<PlayerScript>();
-        // PS = GameObject.FindWithTag("Player").GetComponent<PlayerScript>();
-        //coinsAmt = PS.goldAmt;
-        //Debug.Log("Ps gold amt: " + PS.goldAmt);
         Debug.Log("Coins Amt: " + coinsAmt);
         if (playerCoins == null)
         {
             Debug.Log("gold amt to string not null");
             if(coinsAmt.ToString() != null)
             {
-                // coinsAmt = PS.goldAmt;
                 coinsAmt = PlayerPrefs.GetInt("Saved Gold", 0);
                 Debug.Log("Coins Amt: " + coinsAmt);
                 playerCoins = coinsAmt.ToString();
@@ -81,19 +74,12 @@ public class Upgrades : MonoBehaviour
             Debug.Log("coinsText not null");
             playerCoins = coinsAmt.ToString();
         }
-        /*if (PS.coinsText.text != null)
-        {
-            Debug.Log("coinsText text not null");
-            playerCoins = PS.goldAmt.ToString();
-        }*/
-
 
         GameObject coinObject = GameObject.FindWithTag("CoinUI");
 
         if (coinObject != null)
         {
             Debug.Log("coin object not null");
-            //PS.coinsText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
             goldText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
             if(goldText.text != null)
             {
@@ -125,9 +111,6 @@ public class Upgrades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("amt of gold: " + PS.goldAmt);
-        //PS.UpdateCoinsCounter();
-        //playerCoins = PS.coinsText.text;
         goldText.text = playerCoins;
         hpText.text = hpCost.ToString();
         dmgText.text = dmgCost.ToString();

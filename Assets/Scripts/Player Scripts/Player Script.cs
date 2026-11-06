@@ -22,7 +22,6 @@ public class PlayerScript : MonoBehaviour
     private Animator animator;
     private float smokeTime = 0f;
 
-    //[SerializeField] private TextMeshProUGUI coinsText;
     public TextMeshProUGUI coinsText;
     
     // Next attack
@@ -79,9 +78,6 @@ public class PlayerScript : MonoBehaviour
         animator = GetComponent<Animator>();
         damageText.text = " ";
 
-        //CC = GetComponent<CoinsCounter>();
-        //coinsText.text = "";
-        //CoinsCounter.coinsCount = 0;
         GameObject coinObject = GameObject.FindWithTag("CoinUI");
 
         if (coinObject != null)
@@ -92,10 +88,6 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.Log("Could not find coin ui tagged!");
         }
-
-        
-
-
     }
 
     void Update()
@@ -109,33 +101,12 @@ public class PlayerScript : MonoBehaviour
                 smoke = false;
             }
         }
-
-        /* if (coinsText != null && !string.IsNullOrEmpty(coinsText.text)) 
-         {
-             Debug.Log("amt of gold: " + goldAmt);
-             // Debug.Log("if coinsText not null");
-             coinsText.text = goldAmt.ToString();
-         }*/
-
-        //most recent correct 
+ 
         if (goldAmt.ToString() != null)
         {
-            //Debug.Log("amt of gold: " + goldAmt);
-            // Debug.Log("if coinsText not null");
-            //coinsText.SetText($"(goldAmt.ToString())");
-            //coinsText.text = goldAmt.ToString();
-            //CC.coinsCount = goldAmt;
             UpdateCoinsCounter();
-            
-           /* if(coinsText.text != null)
-            {
-                coinsText.text = "" + goldAmt;
-            }*/
-           // else { coinsText.text += goldAmt.ToString(); }
         }
         else { Debug.Log("else"); }
-
-        //UpdateCoins();
     }
 
     //PLACEHOLDER METHOD
@@ -205,11 +176,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
-
-
-
-
     // spells
     IEnumerator FireballAttack(EnemyScript enemy)
     {
@@ -230,68 +196,35 @@ public class PlayerScript : MonoBehaviour
         this.smokeTime = smokeTime;
     }
 
-
-
-
-
-    
-
-        
-
-    public void GameOver()
-    {
-        Destroy(gameObject);
-        //and probably add ui 
-    }
-
-    /*private void OnTriggerEnter2D(Collider2D collider)
-    {
-            Debug.Log("player collider");
-            goldAmt = lvl * 2;
-            Destroy(gameObject);
-        
-    }*/
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Coins"))
-        { 
+        {
             Debug.Log("player collider");
             Destroy(collision.gameObject);
             goldAmt = lvl * 2;
-
-            // if (coinsText != null) { coinsText.text = goldAmt.ToString(); }
+            PlayerPrefs.SetInt("Saved Gold", goldAmt);
+            PlayerPrefs.Save();
         }
     }
 
     public void UpdateCoinsCounter()
     {
         if (coinsText != null)
-            {
-                //Debug.Log("update coin if");
-                //coinsText.text = "Coins: " + CC.coinsCount;
-                coinsText.text = goldAmt.ToString();
-                PlayerPrefs.SetInt("Saved Gold", goldAmt);
-                PlayerPrefs.Save();
-
-
+        {
+            coinsText.text = goldAmt.ToString();
+            PlayerPrefs.SetInt("Saved Gold", goldAmt);
+            PlayerPrefs.Save();
         }
-        else 
-            {
-                Debug.Log("update coin else");
-            //if (coinsText == null) { Debug.Log("coinsText is MISSING"); }
-            //if (CC.coinsCount.ToString() == null) { Debug.Log("coinsCount is missing"); }
-            //if (goldAmt.ToString() == null) { Debug.Log("coinsCount is missing"); }
-            //if (coinsText.text == null) { Debug.Log("coinsText text is MISSING"); }
-            //coinsText.text = CC.coinsCount.ToString();
-            /*if (coinsText == null)
-            {
-                coinsText.text = "" + goldAmt;
-            }*/
+        else
+        {
+            Debug.Log("update coin else");
         }
+    }
 
-        
-        //if (coinsText.text != goldAmt.ToString()) { Debug.Log("Update coins"); coinsText.text = goldAmt.ToString(); }
-        //else { Debug.Log("Coins text is null"); }
+    public void GameOver()
+    {
+        Destroy(gameObject);
+        //and probably add ui 
     }
 }

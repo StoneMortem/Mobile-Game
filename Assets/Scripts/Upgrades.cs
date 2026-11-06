@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
@@ -48,7 +49,9 @@ public class Upgrades : MonoBehaviour
     public GameObject UDisplay;
     bool displayActive = false;
 
-    PlayerScript PS;
+    public PlayerScript PS;
+    public int coinsAmt;
+    string playerCoins;
 
 
 
@@ -56,9 +59,56 @@ public class Upgrades : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        PS = GetComponent<PlayerScript>();
+        //PS = GetComponent<PlayerScript>();
+        // PS = GameObject.FindWithTag("Player").GetComponent<PlayerScript>();
+        //coinsAmt = PS.goldAmt;
+        //Debug.Log("Ps gold amt: " + PS.goldAmt);
+        Debug.Log("Coins Amt: " + coinsAmt);
+        if (playerCoins == null)
+        {
+            Debug.Log("gold amt to string not null");
+            if(coinsAmt.ToString() != null)
+            {
+                // coinsAmt = PS.goldAmt;
+                coinsAmt = PlayerPrefs.GetInt("Saved Gold", 0);
+                Debug.Log("Coins Amt: " + coinsAmt);
+                playerCoins = coinsAmt.ToString();
+            }
+           
+        }
+        if (playerCoins != null)
+        {
+            Debug.Log("coinsText not null");
+            playerCoins = coinsAmt.ToString();
+        }
+        /*if (PS.coinsText.text != null)
+        {
+            Debug.Log("coinsText text not null");
+            playerCoins = PS.goldAmt.ToString();
+        }*/
 
-        goldText.text = PS.coinsText.text;
+
+        GameObject coinObject = GameObject.FindWithTag("CoinUI");
+
+        if (coinObject != null)
+        {
+            Debug.Log("coin object not null");
+            //PS.coinsText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
+            goldText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
+            if(goldText.text != null)
+            {
+                goldText.text = playerCoins;
+            }
+            else
+            {
+                Debug.Log("ps gold amt to string is null");
+            }
+        }
+        else
+        {
+            Debug.Log("Could not find coin ui tagged!");
+        }
+
         dmgCost = dmgLvl * 10f * 1.5f;
         critCost = critLvl * 10f * 1.5f;
         hpCost = hpLvl * 10f * 1.5f;
@@ -75,7 +125,10 @@ public class Upgrades : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        //Debug.Log("amt of gold: " + PS.goldAmt);
+        //PS.UpdateCoinsCounter();
+        //playerCoins = PS.coinsText.text;
+        goldText.text = playerCoins;
         hpText.text = hpCost.ToString();
         dmgText.text = dmgCost.ToString();
         critText.text = critCost.ToString();

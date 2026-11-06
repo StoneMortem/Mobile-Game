@@ -168,12 +168,12 @@ TextureImporter:
       name: idle_transformed_0
       rect:
         serializedVersion: 2
-        x: 55
-        y: 62
-        width: 44
-        height: 32
+        x: 0
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: idle_transformed_1
       rect:
         serializedVersion: 2
-        x: 201
-        y: 62
-        width: 45
-        height: 32
+        x: 146
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: idle_transformed_2
       rect:
         serializedVersion: 2
-        x: 347
-        y: 62
-        width: 43
-        height: 30
+        x: 292
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: idle_transformed_3
       rect:
         serializedVersion: 2
-        x: 493
-        y: 62
-        width: 38
-        height: 29
+        x: 438
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: idle_transformed_4
       rect:
         serializedVersion: 2
-        x: 639
-        y: 62
-        width: 40
-        height: 29
+        x: 584
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: idle_transformed_5
       rect:
         serializedVersion: 2
-        x: 785
-        y: 62
-        width: 42
-        height: 29
+        x: 730
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,12 +300,12 @@ TextureImporter:
       name: idle_transformed_6
       rect:
         serializedVersion: 2
-        x: 931
-        y: 62
-        width: 41
-        height: 30
+        x: 876
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -322,12 +322,12 @@ TextureImporter:
       name: idle_transformed_7
       rect:
         serializedVersion: 2
-        x: 1077
-        y: 62
-        width: 41
-        height: 32
+        x: 1022
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: idle_transformed_8
       rect:
         serializedVersion: 2
-        x: 1223
-        y: 62
-        width: 42
-        height: 32
+        x: 1168
+        y: 0
+        width: 146
+        height: 146
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -366,7 +366,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8539f96bc2b4b384db119d17b5ab9033
     internalID: 0
     vertices: []
     indices: 
@@ -374,7 +374,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":9.0,"y":1.0},"gridSpriteSize":{"x":146.0,"y":146.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       idle_transformed_0: -8398500527302845922
       idle_transformed_1: 3450344756920649356

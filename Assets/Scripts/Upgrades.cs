@@ -67,7 +67,6 @@ public class Upgrades : MonoBehaviour
                 Debug.Log("Coins Amt: " + coinsAmt);
                 playerCoins = coinsAmt.ToString();
             }
-           
         }
         if (playerCoins != null)
         {

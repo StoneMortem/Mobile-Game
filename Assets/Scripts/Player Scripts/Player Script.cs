@@ -83,6 +83,7 @@ public class PlayerScript : MonoBehaviour
         if (coinObject != null)
         {
             coinsText = coinObject.GetComponentInChildren<TextMeshProUGUI>();
+            goldAmt = PlayerPrefs.GetInt("Saved Gold", 0);
         }
         else
         {
@@ -202,7 +203,7 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.Log("player collider");
             Destroy(collision.gameObject);
-            goldAmt = lvl * 2;
+            goldAmt += lvl * 2;
             PlayerPrefs.SetInt("Saved Gold", goldAmt);
             PlayerPrefs.Save();
         }

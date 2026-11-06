@@ -192,6 +192,12 @@ public class PlayerScript : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void STATRESET()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
+
     //PLACEHOLDER METHOD
     public IEnumerator ChooseAttack(EnemyScript enemy)
     {

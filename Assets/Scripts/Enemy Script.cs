@@ -56,7 +56,7 @@ public class EnemyScript : MonoBehaviour
         }
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        maxHealth = 5 + 10*PS.lvl;
+        maxHealth = 5 + 6*PS.lvl;
         health = maxHealth;
         level = PS.lvl;
         dmg = level * 4;

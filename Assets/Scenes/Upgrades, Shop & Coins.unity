@@ -643,8 +643,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78.99997}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 37.326, y: -78.99997}
+  m_SizeDelta: {x: 297.929, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &91494929
 MonoBehaviour:
@@ -693,8 +693,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2581,8 +2581,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78.99997}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 13.313, y: -78.99997}
+  m_SizeDelta: {x: 282.417, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &550793103
 MonoBehaviour:
@@ -2631,8 +2631,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2718,8 +2718,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78.99997}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 18.487, y: -78.99997}
+  m_SizeDelta: {x: 293.805, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &562191276
 MonoBehaviour:
@@ -2768,8 +2768,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2855,8 +2855,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78.99997}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -0.001, y: -78.99997}
+  m_SizeDelta: {x: 303.61, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &562615340
 MonoBehaviour:
@@ -2905,8 +2905,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4215,8 +4215,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 13.313, y: -79}
+  m_SizeDelta: {x: 287.126, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872547175
 MonoBehaviour:
@@ -4265,8 +4265,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4882,8 +4882,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 8.876, y: -79}
+  m_SizeDelta: {x: 298.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971253951
 MonoBehaviour:
@@ -4932,8 +4932,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5156,8 +5156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78.99997}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -13.313, y: -78.99997}
+  m_SizeDelta: {x: 324.803, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &991798651
 MonoBehaviour:
@@ -5206,8 +5206,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7444,8 +7444,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -79}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -17.751, y: -79}
+  m_SizeDelta: {x: 327.157, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380687523
 MonoBehaviour:
@@ -7494,8 +7494,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8855,8 +8855,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -78.99997}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 39.941, y: -78.99997}
+  m_SizeDelta: {x: 296.545, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1556300900
 MonoBehaviour:
@@ -8905,8 +8905,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.2
-  m_fontSizeBase: 22.2
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10119,6 +10119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1737384975}
   - component: {fileID: 1737384974}
+  - component: {fileID: 1737384976}
   m_Layer: 0
   m_Name: Upgrades
   m_TagString: Untagged
@@ -10163,14 +10164,26 @@ MonoBehaviour:
   potionCost: 0
   goldText: {fileID: 4664476205662294800}
   hpText: {fileID: 1603756331}
+  hpDesc: {fileID: 1380687523}
   dmgText: {fileID: 2038891222}
+  dmgDesc: {fileID: 991798651}
   critText: {fileID: 1122859370}
+  critDesc: {fileID: 562615340}
   fb_dText: {fileID: 831074938}
   fb_cText: {fileID: 1483619267}
+  fb_Desc: {fileID: 971253951}
   fz_dText: {fileID: 1299988474}
   fz_cText: {fileID: 1856437326}
+  fz_Desc: {fileID: 562191276}
   s_dText: {fileID: 288141074}
   s_cText: {fileID: 1747300404}
+  s_Desc: {fileID: 91494929}
+  spearDesc: {fileID: 872547175}
+  spearText: {fileID: 645687015}
+  shieldDesc: {fileID: 550793103}
+  shieldText: {fileID: 169534495}
+  potionDesc: {fileID: 1556300900}
+  potionText: {fileID: 1462113743}
   Skills: []
   UDisplay: {fileID: 0}
 --- !u!4 &1737384975
@@ -10188,6 +10201,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1737384976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737384973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1412eb7298a9ea648b19e0e6290b44bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerScript
+  coinCounter: {fileID: 4664476205662294800}
+  lvl: 1
+  kills: 0
+  gold: 0
+  hpLvl: 1
+  dmgLvl: 1
+  critLvl: 1
+  dodgeLvl: 1
+  fb_dmgLvl: 1
+  fb_cdLvl: 1
+  fz_durLvl: 1
+  fz_cdLvl: 1
+  s_durLvl: 1
+  s_cdLvl: 1
+  spearLvl: 1
+  shieldLvl: 1
+  potionLvl: 1
+  fireballPrefab: {fileID: 0}
+  smokePrefab: {fileID: 0}
+  damageText: {fileID: 0}
+  TEMPATK: 1
 --- !u!1 &1747300402
 GameObject:
   m_ObjectHideFlags: 0
@@ -12497,6 +12543,30 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1737384976}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: SaveStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1737384976}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: SaveItemStats
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2113085275}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -12567,10 +12637,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1552253927}
     m_Modifications:
-    - target: {fileID: 1262790264215488754, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
-      propertyPath: m_text
-      value: 1000
-      objectReference: {fileID: 0}
     - target: {fileID: 1262790264215488754, guid: 498be7d2a98820b44bd036063f415e39, type: 3}
       propertyPath: m_fontAsset
       value: 

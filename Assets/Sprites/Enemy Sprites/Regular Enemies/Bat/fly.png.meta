@@ -174,12 +174,12 @@ TextureImporter:
       name: fly_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 24
-        width: 56
-        height: 35
+        x: 0
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -196,12 +196,12 @@ TextureImporter:
       name: fly_1
       rect:
         serializedVersion: 2
-        x: 105
-        y: 25
-        width: 58
-        height: 31
+        x: 87
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -218,12 +218,12 @@ TextureImporter:
       name: fly_2
       rect:
         serializedVersion: 2
-        x: 194
-        y: 24
-        width: 58
-        height: 17
+        x: 174
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -240,12 +240,12 @@ TextureImporter:
       name: fly_3
       rect:
         serializedVersion: 2
-        x: 293
-        y: 15
-        width: 46
-        height: 26
+        x: 261
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,12 +262,12 @@ TextureImporter:
       name: fly_4
       rect:
         serializedVersion: 2
-        x: 378
-        y: 19
-        width: 48
-        height: 22
+        x: 348
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -284,12 +284,12 @@ TextureImporter:
       name: fly_5
       rect:
         serializedVersion: 2
-        x: 459
-        y: 23
-        width: 56
-        height: 20
+        x: 435
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -306,12 +306,12 @@ TextureImporter:
       name: fly_6
       rect:
         serializedVersion: 2
-        x: 541
-        y: 26
-        width: 61
-        height: 20
+        x: 522
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -328,12 +328,12 @@ TextureImporter:
       name: fly_7
       rect:
         serializedVersion: 2
-        x: 623
-        y: 26
-        width: 68
-        height: 25
+        x: 609
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: fly_8
       rect:
         serializedVersion: 2
-        x: 709
-        y: 25
-        width: 69
-        height: 33
+        x: 696
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -372,12 +372,12 @@ TextureImporter:
       name: fly_9
       rect:
         serializedVersion: 2
-        x: 801
-        y: 24
-        width: 51
-        height: 43
+        x: 783
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -394,12 +394,12 @@ TextureImporter:
       name: fly_10
       rect:
         serializedVersion: 2
-        x: 893
-        y: 24
-        width: 46
-        height: 48
+        x: 870
+        y: 0
+        width: 87
+        height: 87
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -416,7 +416,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 49e3c1532431af94d93902dd469c5a00
     internalID: 0
     vertices: []
     indices: 
@@ -424,7 +424,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":11.0,"y":1.0},"gridSpriteSize":{"x":87.0,"y":87.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       fly_0: 5352286359449648278
       fly_1: 6843129032921346866

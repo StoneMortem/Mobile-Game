@@ -506,7 +506,6 @@ MonoBehaviour:
   canAtk: 1
   damageText: {fileID: 8775617327758511009}
   sr: {fileID: 0}
-  coinsPrefab: {fileID: 8660319425814000635, guid: c0e7462874e3d9a4691a99e3a63679d2, type: 3}
 --- !u!50 &1104752581096458768
 Rigidbody2D:
   serializedVersion: 5

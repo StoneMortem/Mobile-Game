@@ -56,10 +56,10 @@ public class EnemyScript : MonoBehaviour
         }
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        maxHealth = 5 + 5*PS.lvl;
+        maxHealth = 5 + 10*PS.lvl;
         health = maxHealth;
         level = PS.lvl;
-        dmg = level * 2;
+        dmg = level * 4;
 
         anim.Play("Idle");
     }

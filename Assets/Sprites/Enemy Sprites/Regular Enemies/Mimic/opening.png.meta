@@ -159,12 +159,12 @@ TextureImporter:
       name: opening_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 146
-        height: 146
+        x: 55
+        y: 62
+        width: 37
+        height: 18
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -181,12 +181,12 @@ TextureImporter:
       name: opening_1
       rect:
         serializedVersion: 2
-        x: 146
-        y: 0
-        width: 146
-        height: 146
+        x: 202
+        y: 62
+        width: 35
+        height: 19
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -203,12 +203,12 @@ TextureImporter:
       name: opening_2
       rect:
         serializedVersion: 2
-        x: 292
-        y: 0
-        width: 146
-        height: 146
+        x: 347
+        y: 62
+        width: 32
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -225,12 +225,12 @@ TextureImporter:
       name: opening_3
       rect:
         serializedVersion: 2
-        x: 438
-        y: 0
-        width: 146
-        height: 146
+        x: 492
+        y: 62
+        width: 34
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -247,12 +247,12 @@ TextureImporter:
       name: opening_4
       rect:
         serializedVersion: 2
-        x: 584
-        y: 0
-        width: 146
-        height: 146
+        x: 633
+        y: 62
+        width: 40
+        height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -269,12 +269,12 @@ TextureImporter:
       name: opening_5
       rect:
         serializedVersion: 2
-        x: 730
-        y: 0
-        width: 146
-        height: 146
+        x: 775
+        y: 62
+        width: 45
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -291,7 +291,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 72baf8f72c016b64198364c951caa5e7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -299,9 +299,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":146.0,"y":146.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       opening_0: -6352952761486075432
       opening_1: -1790238023041359489

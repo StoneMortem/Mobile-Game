@@ -150,12 +150,12 @@ TextureImporter:
       name: fly-to-fall_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 87
-        height: 87
+        x: 24
+        y: 18
+        width: 46
+        height: 41
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -172,12 +172,12 @@ TextureImporter:
       name: fly-to-fall_1
       rect:
         serializedVersion: 2
-        x: 87
-        y: 0
-        width: 87
-        height: 87
+        x: 124
+        y: 15
+        width: 27
+        height: 45
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: fly-to-fall_2
       rect:
         serializedVersion: 2
-        x: 174
-        y: 0
-        width: 87
-        height: 87
+        x: 215
+        y: 13
+        width: 17
+        height: 47
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -216,7 +216,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a59902c0fda1ddc4aa48c8b38d20f959
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -224,9 +224,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":3.0,"y":1.0},"gridSpriteSize":{"x":87.0,"y":87.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
       fly-to-fall_0: -3069233111755077325
       fly-to-fall_1: -3112097669322065440

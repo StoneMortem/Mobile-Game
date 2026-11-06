@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
         tapSpeed = normalSpeed * 1.5f;
 
         normalRunSpeed = runSpeed;
-        tappingRunSpeed = runSpeed + 2f;
+        tappingRunSpeed = runSpeed + 1;
     }
 
     void Update()

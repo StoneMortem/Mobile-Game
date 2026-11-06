@@ -139,6 +139,7 @@ MonoBehaviour:
   canAtk: 1
   damageText: {fileID: 1227873587557991301}
   sr: {fileID: 0}
+  coinsPrefab: {fileID: 8660319425814000635, guid: c0e7462874e3d9a4691a99e3a63679d2, type: 3}
 --- !u!50 &4982883463862270740
 Rigidbody2D:
   serializedVersion: 5
@@ -200,7 +201,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.07411173}
+  m_Offset: {x: 0, y: -0.07}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -210,7 +211,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3, y: 0.37677652}
+  m_Size: {x: 0.3, y: 0.385}
   m_EdgeRadius: 0
 --- !u!1 &1376134867068795511
 GameObject:

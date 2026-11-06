@@ -110,6 +110,12 @@ public class PlayerScript : MonoBehaviour
         else { Debug.Log("else"); }
     }
 
+    public void STATRESET()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+    }
+
     //PLACEHOLDER METHOD
     public IEnumerator ChooseAttack(EnemyScript enemy)
     {

@@ -59,7 +59,7 @@ public class EnemyScript : MonoBehaviour
         maxHealth = 5 + 6*PS.lvl;
         health = maxHealth;
         level = PS.lvl;
-        dmg = level * 4;
+        dmg = level * 1.5f ;
 
         anim.Play("Idle");
     }

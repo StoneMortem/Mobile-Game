@@ -14,6 +14,8 @@ public class EnemyScript : MonoBehaviour
     private bool frozen = false;
     private float frozenTime = 0;
 
+    Vector2 spawnPosition;
+
     // UI
     [SerializeField] TMP_Text damageText;
     private Slider healthBar;
@@ -24,8 +26,8 @@ public class EnemyScript : MonoBehaviour
 
     GameObject Player;
     PlayerScript PS;
-    SpriteRenderer sr;
-
+    public SpriteRenderer sr;
+    public GameObject coinsPrefab;
 
     //later, we will probably have an ENUM dictating which enemy type spawns (and any particular stats unique to them)
     //but for now, I just want to create a generic enemy
@@ -42,9 +44,6 @@ public class EnemyScript : MonoBehaviour
         healthBar = GetComponentInChildren<Slider>();
         healthBar.maxValue = maxHealth;
         healthBar.value = health;
-
-        damageText = GetComponentInChildren<TMP_Text>();
-        damageText.text = " ";
     }
 
     private void Start()
@@ -56,12 +55,10 @@ public class EnemyScript : MonoBehaviour
         }
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        maxHealth = 5 + 6*PS.lvl;
+        maxHealth = 10 + 5*PS.lvl;
         health = maxHealth;
         level = PS.lvl;
-        dmg = level * 4;
-
-        anim.Play("Idle");
+        dmg = level * 2;
     }
 
 
@@ -100,10 +97,11 @@ public class EnemyScript : MonoBehaviour
             AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
             yield return new WaitForSeconds(state.length);
 
+            // anim.Play("Idle");
+
             StartCoroutine(PS.TakeDamage(dmg));
             yield return new WaitForSeconds(.5f);
-
-            anim.Play("Idle");
+            //StartCoroutine(AtkCooldown());
         }
     }
     public IEnumerator Dmg(float damage)
@@ -145,7 +143,7 @@ public class EnemyScript : MonoBehaviour
     private void Die()
     {
         anim.Play("Death");
-        PS.gold += level * 2;
+        //PS.goldAmt += level * 2;
         PS.kills += 1;
         if (PS.kills % 2 == 0)
         {
@@ -155,6 +153,8 @@ public class EnemyScript : MonoBehaviour
         Debug.Log("BLEHH!!! Player gained " + level*2 + "gold!");
         canAtk = false;
         Destroy(gameObject,.5f);
+        spawnPosition = new Vector2(transform.position.x, (float)-0.36);
+        Instantiate(coinsPrefab, spawnPosition, Quaternion.identity);
         
         
     }

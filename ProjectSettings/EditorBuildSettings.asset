@@ -18,4 +18,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Upgrades, Shop & Coins.unity
     guid: 15ad6c59f2a837e4bbf7b0f2f13d1146
   m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: bcefe66536ccfdf45be9eabf4f132512, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 0842f2d98026ab346b84020850897009, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 948a8cd2fede32244af372eac5d769b0, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 3f82276042a85da45abe3790f66cb26d, type: 2}

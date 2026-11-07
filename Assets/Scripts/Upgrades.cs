@@ -222,10 +222,11 @@ public class Upgrades : MonoBehaviour
         if (PS.goldAmt >= hpCost)
         {
             hpLvl++;
+            PS.goldAmt -= (int)hpCost;
             hpCost = hpLvl * 10f * 1.5f;
             PS.hpLvl++;
             PS.SetMaxHP(20 + (PS.hpLvl * 10));
-            PS.goldAmt -= (int)hpCost;
+            
             Debug.Log("Health upgraded to level " + hpLvl + ". Gold remaining: " + PS.goldAmt);
         }
         else
@@ -239,9 +240,10 @@ public class Upgrades : MonoBehaviour
     {
         if (PS.goldAmt >= skillCost)
         {
+            PS.goldAmt -= (int)skillCost;
             skillSlots++;
             skillCost *=  100f * 3f;
-            PS.goldAmt -= (int)skillCost;
+            
             Debug.Log("Skill slots increased to " + skillSlots + ". Gold remaining: " + PS.goldAmt);
         }
         else

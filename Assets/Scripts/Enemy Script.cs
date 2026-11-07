@@ -7,7 +7,7 @@ public class EnemyScript : MonoBehaviour
 {
     public float atkInterval;
     public float health;
-    private float maxHealth = 10;
+    private float maxHealth;
     public int level;
     public float dmg;
     public bool canAtk = true;
@@ -41,6 +41,7 @@ public class EnemyScript : MonoBehaviour
     private void Awake()
     {
         
+       
 
         // UI
         healthBar = GetComponentInChildren<Slider>();
@@ -53,17 +54,22 @@ public class EnemyScript : MonoBehaviour
 
     private void Start()
     {
-        {Player = GameObject.FindGameObjectWithTag("Player");
-        PS = Player.GetComponent<PlayerScript>();
-        sr = GetComponent<SpriteRenderer>();
+        {
+            Player = GameObject.FindGameObjectWithTag("Player");
+            PS = Player.GetComponent<PlayerScript>();
+            sr = GetComponent<SpriteRenderer>();
             anim = GetComponent<Animator>();
         }
+
         //Placeholder stat assignment
         atkInterval = 1.5f;
-        maxHealth = 5 + 6*PS.lvl;
+        maxHealth = 5 + 6 * PS.lvl;
         health = maxHealth;
         level = PS.lvl;
-        dmg = level * 1.5f ;
+        dmg = level * 2.5f;
+
+        healthBar.maxValue = maxHealth;
+        healthBar.value = health;
 
         anim.Play("Idle");
     }

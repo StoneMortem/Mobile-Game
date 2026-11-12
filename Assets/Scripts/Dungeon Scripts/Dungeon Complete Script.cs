@@ -49,6 +49,13 @@ public class DungeonCompleteScript : MonoBehaviour
 
     public void DungeonFailed()
     {
+        // Player always gets at least a little gold even when failing
+        int currentGold = PlayerPrefs.GetInt("Saved Gold");
+        int level = PlayerPrefs.GetInt("Level");
+        int coins = Random.Range(1, 4) * level;
+
+        PlayerScript.Instance.FailedDungeonCoins(coins);
+
         dungeonCompleteText.text = "Dungeon Failed...";
         StartCoroutine(ToUpgradeScreen(4f));
     }

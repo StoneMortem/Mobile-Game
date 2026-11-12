@@ -1,9 +1,10 @@
 using System;
-using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 public class PlayerScript : MonoBehaviour
 {
 
@@ -274,9 +275,11 @@ public class PlayerScript : MonoBehaviour
     {
         // Random chance to dodge here
 
+        string textDamage = damage.ToString("F2");
+
         if (!smoke)
         {
-            damageText.text = $"{damage}";
+            damageText.text = $"{textDamage}";
 
             //Debug.Log("Ow! " + currentEnemy.name + " dealt " + damage + "!");
             HP -= damage;
@@ -297,6 +300,8 @@ public class PlayerScript : MonoBehaviour
         } else
         {
             damageText.text = "0";
+            yield return new WaitForSeconds(.5f);
+            damageText.text = "";
         }
     }
 
@@ -331,10 +336,17 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.Log("player collider");
             Destroy(collision.gameObject);
-            goldAmt += lvl * 2;
+            goldAmt += UnityEngine.Random.Range(3, 6) * lvl;
             PlayerPrefs.SetInt("Saved Gold", goldAmt);
             PlayerPrefs.Save();
         }
+    }
+
+    public void FailedDungeonCoins(int coins)
+    {
+        goldAmt += coins;
+        PlayerPrefs.SetInt("Saved Gold", goldAmt);
+        PlayerPrefs.Save();
     }
 
     public void UpdateCoinsCounter()

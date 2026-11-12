@@ -66,7 +66,7 @@ public class EnemyScript : MonoBehaviour
         maxHealth = 5 + 6 * PS.lvl;
         health = maxHealth;
         level = PS.lvl;
-        dmg = level * 2.5f;
+        dmg = level;
 
         healthBar.maxValue = maxHealth;
         healthBar.value = health;
@@ -98,6 +98,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
     }
+
     public IEnumerator Atk()
     {
         if (!frozen)
@@ -110,7 +111,9 @@ public class EnemyScript : MonoBehaviour
             AnimatorStateInfo state = anim.GetCurrentAnimatorStateInfo(0);
             yield return new WaitForSeconds(state.length);
 
-            StartCoroutine(PS.TakeDamage(dmg));
+            float randomDamage = Random.Range(1.5f, 2.5f);
+
+            StartCoroutine(PS.TakeDamage(randomDamage));
             yield return new WaitForSeconds(.5f);
 
             anim.Play("Idle");
